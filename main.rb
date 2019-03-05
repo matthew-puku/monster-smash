@@ -9,9 +9,22 @@ until bout.outcome != :ongoing
     bout.run_round
 end
 
-# Victory screen, conditionally executes
-
 # Defeat screen, conditionally executes
+if bout.outcome == :combatant1win
+    puts " ---------------------------- "
+    puts "   You have been defeated."
+    puts " ---------------------------- "
+    # Victory screen, conditionally executes
+elsif bout.outcome == :combatant0win
+    puts " ---------------------------- "
+    puts "   Congrats! You have won!"
+    puts " ---------------------------- "
+# Quit screen, always executes
+else
+    puts " ---------------------------- "
+    puts "      Thanks for playing!"
+    puts " ---------------------------- "
+end
 
 # Quit screen, always executes
 puts "Thanks for playing!"
