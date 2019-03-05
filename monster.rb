@@ -57,3 +57,4 @@ Jerry = Monster.new("Jerry Seinfeld", 120, 120, [Smash, Quick_Attack, Thrash, Ba
 # puts Frank.random_move.name
 # puts Frank.random_move.name
 # puts Frank.random_move.name
+#beep

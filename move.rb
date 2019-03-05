@@ -11,3 +11,4 @@ Smash = Move.new("Smash", 30, 50)
 Quick_Attack = Move.new("Quick Attack", 15, 90)
 Thrash = Move.new("Thrash", 20, 70)
 Bash = Move.new("Bash", 35, 10)
+#beep

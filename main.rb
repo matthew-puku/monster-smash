@@ -15,3 +15,4 @@ end
 
 # Quit screen, always executes
 puts "Thanks for playing!"
+#beep
