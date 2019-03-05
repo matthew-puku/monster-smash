@@ -38,8 +38,12 @@ class Monster
     end
 end
 
-Frank = Monster.new("Frankenstein's Monster", 150, 150, [Smash, Quick_Attack, Thrash, Bash])
-Jerry = Monster.new("Jerry Seinfeld", 120, 120, [Smash, Quick_Attack, Thrash, Bash])
+Frank = Monster.new("Frankenstein's Monster", 150, 150, [Smash, Rapid_Attack, Thrash, Bash])
+Jerry = Monster.new("Jerry Seinfeld", 120, 120, [Smash, Rapid_Attack, Thrash, Bash])
+Dracula = Monster.new("Dracula", 100, 100, [Smash, Rapid_Attack, Thrash, Bash])
+Wolfman = Monster.new("Wolfman", 150, 150, [Smash, Rapid_Attack, Thrash, Bash]) 
+Igor = Monster.new("Igor", 100, 100, [Smash, Rapid_Attack, Thrash, Bash])
+Zombie = Monster.new("Zombie", 120, 120, [Smash, Rapid_Attack, Thrash, Bash])
 
 # puts frank.name
 # puts frank.moves
