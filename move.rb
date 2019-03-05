@@ -1,6 +1,5 @@
 class Move
-    attr_accessor :damage, :speed
-    attr_reader :name
+    attr_reader :name, :damage, :speed
     def initialize(name, damage, speed)
         @name = name # A string, e.g. "Smash"
         @damage = damage # An integer. The base damage of the move.
