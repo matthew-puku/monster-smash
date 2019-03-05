@@ -7,8 +7,11 @@ class Move
     end
 end
 
+# initialise new moves with respective damage counts and speed counts
 Smash = Move.new("Smash", 30, 50)
-Quick_Attack = Move.new("Quick Attack", 15, 90)
+Rapid_Attack = Move.new("Rapid_Attack", 15, 90)
 Thrash = Move.new("Thrash", 20, 70)
 Bash = Move.new("Bash", 35, 10)
-#beep
+Boost_Speed = Move.new("Boost_Speed", 10, 90)
+Berserk = Move.new("Berserk", 50, 10)
+Leeching_Bite = Move.new("Leeching_Bite", 10, 10)
