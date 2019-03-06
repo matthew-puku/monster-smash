@@ -6,9 +6,9 @@
 This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must be the first to deplete the opponent’s (computer) health score (HP). 
 
 ## Motivation
-The team wanted to use the assessment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun and entertaining vehicle. 
+The team wanted to use this assignment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun and entertaining vehicle. 
 
-Other non-game ideas were also explored, such as
+Other project ideas were also explored, including
 
 - A **journal app** which takes in user input as string with a daily mood category.The user input will be parsed and searched for recurring keywords, which in turns trigger a ‘mood’ category. 
 
@@ -30,25 +30,27 @@ A series of checking gateways (control structures) continually checks and compar
 - Establish ‘move’ objects each with speed and damage attributes
 - Establish a character class ‘monster’ with attributes including `@current_HP`, `@max_HP`, an array of `@moves` 
 - Each `move` has unique `speed` and `damage` values which will deplete `@current_HP` at different rates
+- A random numerical generator selects a move for the computer player, which includes a `miss` option that does not deplete `@current_HP` at all
 - Display health scores of the user and computer
 - Increment or subtract health scores from user and computer
 - Compare health scores between user and computer (also catches errors and edge cases)
 - Display welcome and quit screens
 - Display victory and defeat screens with scores
 - User can quit at any point of the running application
+- Implemented ASCII art for the welcome, victory, defeat screens using a gem like [Artii](https://github.com/miketierney/artii) in `messages.rb`
+- Implement ASCII art for each move selected using [Artii](https://github.com/miketierney/artii) in `monster.rb`
 
 Users can only interact with this terminal application via keyboard input.
 
 ### Extensible features
 - Implement a best of 3 battle rounds in `battle.rb`
 - User and computer can level-up as they advance to the next battle round. Possibly implement an control structure in `battle.rb`.
-- Implement ASCII art for the welcome, victory, defeat screens using a gem like [Artii](https://github.com/miketierney/artii) in `messages.rb`
-- Implement ASCII art for each move selected using [Artii](https://github.com/miketierney/artii) in `monster.rb`
 - Allow for replay of battle rounds in `battle.rb`
 - More monster or characters can be created in `monster.rb`
 - Different moves can be created in `moves.rb`
 - Randomly choose a monster opponent to play against, which may require the creation of a new class like a gallery
 - Allow the user to choose their own monster character, which again may require extending `main.rb` and or `battle.rb`
+- Convert `@max_HP` and `@current_HP` into a visual progress bar using the gem [ruby-progressbar](https://github.com/jfelchner/ruby-progressbar)
 - Colorize the progress bar using the [Colorize](https://github.com/fazibear/colorize) ruby gem
 
 ## Code Structure
@@ -61,6 +63,12 @@ It was decided from early in the planning stage that the MVP will be structured 
 
 Towards the later stages of code refactoring, an additional class `messages.rb` was created to handle only displaying feedback screens such as the initial welcome screen, victory and defeat screens.
 
+### Gems
+
+The app made use of third-party gem (extensions) to enhance the graphical user interface experience:
+* [Artii](https://github.com/miketierney/artii) for the ASCII word art
+* [IO/Console](https://github.com/ruby/io-console)
+
 ## Build Status
 The current product is a completed, functional proof-of-concept, with many extensible features identified by the team for future exploration. 
 
@@ -68,15 +76,27 @@ The current product is a completed, functional proof-of-concept, with many exten
 
 1. Follow these instructions to [download and install](https://www.ruby-lang.org/en/documentation/installation/) Ruby on your computer. 
 2. Download and unzip the files on your local computer. 
-3. In the terminal command line, navigate to the src folder by inputting the command 
+3. On the terminal command line, navigate to the src folder. Install the bundler gem (if you haven't already) 
+```
+> install bundler
+```
+4. Ask bundle to install the gems that we use for the program. 
+```
+> bundle install 
+```
+5. In the terminal command line, navigate to the src folder by inputting the command 
   ```
   > cd src 
   ```
-4. Input the below command in the terminal command line.  
+6. Input the below command in the terminal command line.  
   ```
   > ruby main.rb
   ```
-5. Program runs. 
+7. If you get an error message asking you to update your bundler, input the below in terminal command line. 
+  ```
+  > gem update --system
+  ```
+8. Program runs. 
 
 ## Design and Planning progress
 
@@ -86,18 +106,22 @@ The team used lo-fi prototyping to map out user input and to decide upon the pre
 
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/CodeStructure2.JPG)
 
+The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. Refactoring the code as we progressed also proved to be a challenge, in sterilising user input and building additional checks. 
+
 ## Record of Planning Progress
 * [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/images/UserInput_flowchart.JPG)
 * [Early Objects and class](https://github.com/matthew-puku/monster-smash/blob/master/images/Code_structure.JPG)
 * [Early Battle flow chart](https://github.com/matthew-puku/monster-smash/blob/master/images/BattleStructure.JPG)
-* [Battle flow chart]
-* [User flow chart]
+* Battle flow chart
+* User flow chart
 
-The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
+## Project Timeline 
 
-The workload was distributed using [Trello](https://trello.com/b/mWeDQSQo/monster-battle-ruby-app), tracked alongside a dissection of the client brief (assignment rubric).
+Project workload was distributed using [Trello](https://trello.com/b/mWeDQSQo/monster-battle-ruby-app), tracked alongside a dissection of the client brief (assignment rubric).
 
 ![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/Trello1.png)
+
+Planning, research and conceptualising the code structure was primarily achieved in one afternoon sitting by prototyping on paper. The coding was an iterative process spread across two afternoons between 5 March to 6 March.
 
 ## Testing
 
