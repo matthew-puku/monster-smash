@@ -1,10 +1,10 @@
-# Monsters Smash Ruby Application
+# Monster Smash Ruby Application
 
 ## Description
-A collaboration between Matthew Puku and Rachel Wong, ‘Monsters Smash’ is a Ruby text adventure application built to explore principles of DRY scripting, modularisation, encapsulation, and object-oriented programming. This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must be the first to deplete the opponent’s (program) health score (HP). 
+‘Monster Smash’ is a Ruby text adventure application built to explore principles of DRY scripting, modularisation, encapsulation, and object-oriented programming. This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must be the first to deplete the opponent’s (program) health score (HP). 
 
 ## Motivation
-The team wanted to use the assessment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun, game-driven vehicle. 
+The team wanted to use the assessment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun and entertaining vehicle. 
 
 Other non-game ideas to fulfil the assessment were also explored, such as
 
@@ -17,7 +17,7 @@ The user input will be parsed and searched for recurring keywords, which in turn
 The turn-based game was chosen in the end as a great opportunity to combine high personal interest, coding challenge and project management possibilities. 
 
 ## Features and Functionality
-This is a single-player game where the user select “moves” via text-input in a series of turns against the computer. Both the user and computer start the game with maximum full health score (HP). And each selected ‘move’ by the user and the computer is calculated to deplete the opponent’s health score by a specific value. A series of checking gateways (control structures) continually checks and compares the health score (HP) of the user and computer to decide whether to advance the game further. The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
+This is a single-player game where the user select “moves” via text-input in a series of turns against the computer. Both the user and computer will begin the game with full health score (HP). And with each selected ‘move’, each player's health score (HP) will deplete by a specific damage count. In the case of a draw where both user and computer selects the exact same move, a speed advantage score will decide which move will deal a greater damage to HP. A series of checking gateways (control structures) continually checks and compares the health score (HP) of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
 
 ### Prototype features
 - Receive user text input to decide moves
@@ -56,4 +56,14 @@ The team used lo-fi prototyping to map out user input and to decide upon the pre
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/CodeStructure2.JPG)
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/UserInput_flowchart.JPG)
 
-The key difficulty faced by the team was in clarifying each step of a single battle (user input versus feedback loop), in ensuring the gameplay is supported by an appropriate amount of user feedback messages. 
+The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
+
+## License
+
+Copyright (c) 2019 Matthew Puku, Rachel Wong
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
