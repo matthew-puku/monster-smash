@@ -25,32 +25,38 @@ class Battle
         output = monster.display_moves + "or type (Q)uit to give up."
         return output
     end
-    def display_healths # UNFINISHED PLACEHOLDER
+    def display_healths
         slow_puts("YOU: #{combatants[0].current_HP.to_i}HP\nFOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
     end
-    def run_round # Plays a turn of the game and updates the outcome as necessary. Best used in a while/until loop.
-        # Move selection. DEV NOTE: this code could be replaced to create a 2 player game or a computer vs. computer auto-battle
+    def user_select_move(combatant)
         validating_input = true
+        selected_move = nil
         while validating_input # In this loop, the player can choose a move or quit
             display_healths
             puts display_choices(@combatants[0])
             user_input = gets.chomp.downcase
             system "clear"
             search_result = combatants[0].search_moves(user_input) # Storing in a variable to avoid running the function twice (once for conditional and once to store a success)
-            if search_result != nil # executes if valid combat input was entered
-                combatant0move = search_result # DEV NOTE: Reassigning this variable is not strictly
-                                               # necessary, but it makes code more readable and modular
+            if search_result != nil # executes if valid move input was entered
+                return search_result 
                 validating_input = false # exits while loop
             elsif user_input == "q" or user_input == "quit"
                 @outcome = :quit # change bout outcome to inform main.rb of user desire to quit.
                 return # break out of the function. DEV NOTE: there may be a nicer way to do this but time does not permit research.
             else
-                puts "Invalid input! Please try again."
+                slow_puts("Invalid input! Please try again.", 0.5)
             end
         end
-        combatant1move = @combatants[1].random_move # The computer chooses a move randomly
+    end
+    def run_round( # Plays a turn of the game and updates the outcome as necessary. Best used in a while/until loop.
+        combatant0move = user_select_move(combatants[0]), # By default, the user selects a move with input...
+        combatant1move = @combatants[1].random_move)      # ...and the computer selects randomly
+        # Check neither combatant chose to quit
+        if @outcome == :quit 
+            return # Stops executing this method
+        end
 
-        # Once moves are selected, decide who will go first
+        # Decide who will go first
         if combatant0move.speed + @player_0_speed_advantage > combatant1move.speed # Player first
             first_move = combatant0move
             first_mover = @combatants[0]
