@@ -92,11 +92,12 @@ The current product is a completed, functional proof-of-concept, with many exten
   ```
   > ruby main.rb
   ```
-7. If you get an error message asking you to update your bundler, input the below in terminal command line. 
+7. If you get an error message like below asking you to update your bundler, input the below in terminal command line. 
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/gemfile%20error.png)
   ```
   > gem update --system
   ```
-8. Program runs. 
+8. Run program using step 6 again. 
 
 ## Design and Planning progress
 
@@ -106,7 +107,13 @@ The team used lo-fi prototyping to map out user input and to decide upon the pre
 
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/CodeStructure2.JPG)
 
-The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. Refactoring the code as we progressed also proved to be a challenge, in sterilising user input and building additional checks. 
+Blocking out the objects and classes proved to be a relatively straight forward exercise. It was immediatley clear to the development team that separate classes are required for move, monster and battle with a `main.rb` as the external trigger to kickstart the program. 
+
+The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
+
+Refactoring the code to keep it extensible, readable for future development was a challenging exercise. 
+
+Healthy time management was also difficult in maintaining a balance between researching for gems, deciding upon MVP functionalities, deciding which functionalities to relegate as 'nice-to-have' for future exploration.
 
 ## Record of Planning Progress
 * [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/images/UserInput_flowchart.JPG)
@@ -125,21 +132,21 @@ Planning, research and conceptualising the code structure was primarily achieved
 
 ## Testing
 
-Rigorous user input testing was conducted to capture as many instances of edge cases as possible. A detailed snapshot of the test cases can be accessed [here](https://docs.google.com/spreadsheets/d/1XyPPReGf2S60YSt3XIqf5JUpHT3cRB2FRkK1rHgxnoI/edit#gid=0). 
+Rigorous user input testing was conducted to capture as many instances of edge cases as possible. A detailed listing of test cases can be reviewed [here](https://docs.google.com/spreadsheets/d/1XyPPReGf2S60YSt3XIqf5JUpHT3cRB2FRkK1rHgxnoI/edit#gid=0). 
 
-[!alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/method_test_example.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/method_test_example.png)
 
 ## Accessibility
 
 The [Web Content Accessibility Guidelines 2.0](https://www.w3.org/WAI/standards-guidelines/wcag/) was consulted adjacent to the coding process. All functionality of the content on *Monster Smash* is operable through a keyboard interface without requiring specific timings for individual keystrokes. There is sufficient clarity in the visual design (black and white) with clear, simple English instructions prompting user input at every step. 
 
-However, the development team acknowledges that until the product has been live-tested with the target demographic users (focus group testing), it is not immediately clear whether *Monster Smash* has adequately catered for all users from a spectrum of ableness based on the [WCAG2.0](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0).
+However, the development team acknowledges that until the product has been live-tested with the target demographic users (focus group testing), it is not immediately clear whether *Monster Smash* has adequately catered for all users from a spectrum of ableness based on the [WCAG 2.0](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0).
 
 ## Copyright, ethical, social issues
 
-As a text-based application with comparatively primitive controls, the development team did not foresee the application would raise any questions of moral, social, ethical impropriety. 
+As a text-based application with comparatively primitive controls (alphabetical), the development team did not foresee the application would raise any questions of moral, social, ethical consequences. 
 
-During the development process, copyright issues were discussed in terms of selecting an appropriate character theme that is already in the public domain. The generic halloween monsters was eventually decided to circumvent copyright issues with other popular culture characters such as Pokemon. 
+Copyright issues were, however, discussed in terms of selecting an appropriate game character theme that is already in the public domain. The generic halloween monsters was eventually decided to circumvent copyright issues with using existing popular culture characters franchises (e.g.Pokemon). 
 
 ## License
 
