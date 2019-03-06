@@ -80,7 +80,7 @@ end
 Leeching_Bite = LifestealAttack.new("Leeching Bite",
     10, # speed
     95, # accuracy
-    12, # damage
+    25, # damage
     1   # lifesteal_factor
 )
 

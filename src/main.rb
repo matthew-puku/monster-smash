@@ -7,7 +7,7 @@ welcome_screen # defined in messages.rb
 
 
 # Game loop, mostly (entirely?) methods of battle object
-bout = Battle.new([Frank, Jerry])
+bout = Battle.new([Player, Dracula])
 until bout.outcome != :ongoing
     bout.run_round
 end
