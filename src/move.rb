@@ -26,8 +26,10 @@ class Attack < Move
         if @accuracy + rand(1..100) > opponent.dodge + 50 # Accuracy check vs. dodge
             puts "It hit for #{damage} damage."
             opponent.current_HP -= @damage
+            return :hit
         else
             puts "...but it missed."
+            return :miss
         end 
     end
 end
@@ -54,11 +56,31 @@ Bash = Attack.new("Bash",
     95, # accuracy
     40  # damage
 )
+
+class LifestealAttack < Attack # Like an Attack, but steals some HP from the opponent
+    def initialize(name, speed, accuracy, damage, lifesteal_factor)
+        super(name, speed, accuracy, damage)
+        @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1 = 100%, 1.5 = 150%, etc.
+    end
+    def use!(user, opponent)
+        move_outcome = super(user, opponent)
+        if move_outcome == :hit
+            healing = @damage * @lifesteal_factor
+            user.current_HP += healing # heals user
+            if user.current_HP > user.max_HP # checks user wasn't healed above their max
+                user.current_HP = user.max_HP
+            end
+            puts "#{user.name} healed #{healing.to_i}HP."
+        end
+    end
+end
+
+Leeching_Bite = LifestealAttack.new("Leeching Bite",
+    10, # speed
+    95, # accuracy
+    12, # damage
+    1   # lifesteal_factor
+)
+
 # Boost_Speed = Move.new("Boost Speed", 10, 90)
 # Berserk = Move.new("Berserk", 50, 10)
-# Leeching_Bite = Move.new("Leeching Bite", 10, 10)
-
-puts Smash.name
-puts Smash.speed
-puts Smash.accuracy
-puts Smash.damage
