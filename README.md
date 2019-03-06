@@ -20,11 +20,15 @@ The turn-based game was chosen in the end as a great opportunity to combine high
 
 ## Features and Functionality
 *Monster Smash* is a single-player game where the user select from an array of `@moves` via text-input in a series of turns against the computer. Following the welcome screen, both the user and computer will start the game with full health score `@max_HP`. 
-
-The user will be promptd to select a `move` to apply to the opponent. And with each selected `move`, each player's health score `@current_HP` will deplete by a specific damage count. In the case of a draw where both user and computer selects the exact same `move`, a speed advantage score will decide which move will deal a greater damage to `@current_HP`.
-
-A series of checking gateways (control structures) continually checks and compares the health score `@current_HP` of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
-
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/1.%20welcome_screen.png)
+The user will be promptd to select a `move` to apply to the opponent. And with each selected `move`, each player's health score `@current_HP` will deplete by a specific damage count. 
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/2.%20hit_screen.png)
+In the case of a draw where both user and computer selects the exact same `move`, a speed advantage score will decide which move will deal a greater damage to `@current_HP`.
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/3.%20missed_screen.png)
+A series of checking gateways (control structures) continually checks and compares the health score `@current_HP` of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). 
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/4.%20victory_screen.png)
+The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/5.%20gameover_screen.png)
 ### Prototype features
 - Receive user text input to decide moves
 - Establish ‘move’ objects each with speed and damage attributes
