@@ -25,18 +25,21 @@ class Battle
         output = monster.display_moves + "or type (Q)uit to give up."
         return output
     end
-    # def display_healths
-    #     puts "#{target.name} has #{target.current_HP.to_i}HP remaining."
-    # end
+    def display_healths # UNFINISHED PLACEHOLDER
+        slow_puts("YOU: #{combatants[0].current_HP.to_i}HP\nFOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
+    end
     def run_round # Plays a turn of the game and updates the outcome as necessary. Best used in a while/until loop.
         # Move selection. DEV NOTE: this code could be replaced to create a 2 player game or a computer vs. computer auto-battle
         validating_input = true
         while validating_input # In this loop, the player can choose a move or quit
+            display_healths
             puts display_choices(@combatants[0])
             user_input = gets.chomp.downcase
+            system "clear"
             search_result = combatants[0].search_moves(user_input) # Storing in a variable to avoid running the function twice (once for conditional and once to store a success)
             if search_result != nil # executes if valid combat input was entered
-                combatant0move = search_result # DEV NOTE: Reassigning this variable is not strictly necessary, but makes code more readable and modular
+                combatant0move = search_result # DEV NOTE: Reassigning this variable is not strictly
+                                               # necessary, but it makes code more readable and modular
                 validating_input = false # exits while loop
             elsif user_input == "q" or user_input == "quit"
                 @outcome = :quit # change bout outcome to inform main.rb of user desire to quit.

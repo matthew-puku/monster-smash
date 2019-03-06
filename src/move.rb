@@ -1,3 +1,5 @@
+require_relative "messages.rb"
+
 class Move
     attr_reader :name, :speed, :accuracy
     def initialize(name, speed, accuracy)
@@ -10,7 +12,7 @@ class Move
                                  # Use 10000 for guaranteed success.
     end
     def use!(user, opponent) # user and opponent must be two Monster objects.
-        puts "#{user.name} used #{@name}!"
+        slow_puts("#{user.name} used #{@name}!")
     end
 end
 
@@ -24,11 +26,11 @@ class Attack < Move
     def use!(user, opponent)
         super(user, opponent)
         if @accuracy + rand(1..100) > opponent.dodge + 50 # Accuracy check vs. dodge
-            puts "It hit for #{damage} damage."
+            slow_puts "It hit for #{damage} damage."
             opponent.current_HP -= @damage
             return :hit
         else
-            puts "...but it missed."
+            slow_puts "...but it missed."
             return :miss
         end 
     end
@@ -70,7 +72,7 @@ class LifestealAttack < Attack # Like an Attack, but steals some HP from the opp
             if user.current_HP > user.max_HP # checks user wasn't healed above their max
                 user.current_HP = user.max_HP
             end
-            puts "#{user.name} healed #{healing.to_i}HP."
+            slow_puts "#{user.name} healed #{healing.to_i}HP."
         end
     end
 end

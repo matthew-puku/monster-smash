@@ -40,7 +40,7 @@ class Monster
     end
 end
 
-Frank = Monster.new("Frankenstein's Monster", 150, 50, [Smash, Rapid_Attack, Thrash, Bash])
+Frank = Monster.new("Frankenstein's Monster", 150, 50, [Smash, Rapid_Attack, Thrash, Leeching_Bite])
 
 
 Jerry = Monster.new("Jerry Seinfeld", 120, 50, [Smash, Rapid_Attack, Thrash, Bash])
