@@ -8,6 +8,7 @@ welcome_screen # defined in messages.rb
 
 # Game loop, mostly (entirely?) methods of battle object
 bout = Battle.new([Player, Dracula])
+bout.display_commencement
 until bout.outcome != :ongoing
     bout.run_round
 end
@@ -17,7 +18,7 @@ if bout.outcome == :combatant1win # computer victory (player defeat)
 elsif bout.outcome == :combatant0win # player victory
     victory_screen # defined in messages.rb
 elsif bout.outcome == :draw
-    puts "It's a draw!" # placeholder. This will probably just trigger a loss in final version.
+    puts "It's a draw!" # placeholder. Not possible with current moveset This will probably just trigger a loss in final version.
 end
 
 quit_screen # defined in messages.rb

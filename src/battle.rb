@@ -21,6 +21,9 @@ class Battle
             @outcome = :combatant0win
         end
     end
+    def display_commencement
+        slow_puts("The battle begins! #{@combatants[0].name} vs. #{@combatants[1].name}")
+    end
     def display_choices(monster) # Returns a monster's formatted movelist plus the option to quit.
         output = monster.display_moves + "or type (Q)uit to give up."
         return output
