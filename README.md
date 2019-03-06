@@ -12,16 +12,18 @@ Other non-game ideas were also explored, such as
 
 - A **journal app** which takes in user input as string with a daily mood category.The user input will be parsed and searched for recurring keywords, which in turns trigger a ‘mood’ category. 
 
-For example, a diary entry with multiple instances of words such as ‘fun’, ‘happy’, ‘satisfied’, ‘great’, ‘awesome’ will automatically    generate a mood category of “Joy”. Inversely, an entry populated by ‘tired’, ‘exhausted’, ‘delay’, ‘moody’, ‘blue’ words could lead to a mood category of “Sad”. The mood category will be colour matched using the ruby gem ‘colorize’.
+For example, a diary entry with multiple instances of words such as ‘fun’, ‘happy’, ‘satisfied’, ‘great’, ‘awesome’ will automatically    generate a mood of “Joy”. Inversely, an entry populated by ‘tired’, ‘exhausted’, ‘delay’, ‘moody’, ‘blue’ words could lead to a mood category of “Sad”. The mood category will then be colour matched to the ruby gem ‘colorize’.
 
 - A **daily expense budgeting app**, which tabulates all financial expenses incurred during a week using to a tag taxonomy. Users can input the name, description to a cost, and assign a tag to each entry. The user can generate a table of weekly cost on command.
 
 The turn-based game was chosen in the end as a great opportunity to combine high personal interest, coding challenge and project management possibilities. 
 
 ## Features and Functionality
-*Monster Smash* is a single-player game where the user select from an array of `@moves` via text-input in a series of turns against the computer. Both the user and computer will begin the game with full health score `@max_HP`. And with each selected `move`’, each player's health score (`@HP_current`) will deplete by a specific damage count. In the case of a draw where both user and computer selects the exact same move, a speed advantage score will decide which move will deal a greater damage to HP.
+*Monster Smash* is a single-player game where the user select from an array of `@moves` via text-input in a series of turns against the computer. Following the welcome screen, both the user and computer will start the game with full health score `@max_HP`. 
 
-A series of checking gateways (control structures) continually checks and compares the health score (`@current_HP`) of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
+The user will be promptd to select a `move` to apply to the opponent. And with each selected `move`, each player's health score `@current_HP` will deplete by a specific damage count. In the case of a draw where both user and computer selects the exact same `move`, a speed advantage score will decide which move will deal a greater damage to `@current_HP`.
+
+A series of checking gateways (control structures) continually checks and compares the health score `@current_HP` of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
 
 ### Prototype features
 - Receive user text input to decide moves
@@ -38,11 +40,16 @@ A series of checking gateways (control structures) continually checks and compar
 Users can only interact with this terminal application via keyboard input.
 
 ### Extensible features
-- Implement a best of 3 battle rounds
-- User and computer can level-up as they advance to the next battle round
-- Implement ASCII art for the welcome, victory, defeat screens
-- Implement ASCII art for each move selected
-- Allow for replay of battle rounds
+- Implement a best of 3 battle rounds in `battle.rb`
+- User and computer can level-up as they advance to the next battle round. Possibly implement an control structure in `battle.rb`.
+- Implement ASCII art for the welcome, victory, defeat screens using a gem like [Artii](https://github.com/miketierney/artii) in `messages.rb`
+- Implement ASCII art for each move selected using [Artii](https://github.com/miketierney/artii) in `monster.rb`
+- Allow for replay of battle rounds in `battle.rb`
+- More monster or characters can be created in `monster.rb`
+- Different moves can be created in `moves.rb`
+- Randomly choose a monster opponent to play against, which may require the creation of a new class like a gallery
+- Allow the user to choose their own monster character, which again may require extending `main.rb` and or `battle.rb`
+- Colorize the progress bar using the [Colorize](https://github.com/fazibear/colorize) ruby gem
 
 ## Code Structure
 
@@ -52,7 +59,7 @@ It was decided from early in the planning stage that the MVP will be structured 
 * `monster.rb` initialises a monster object which will have an array of `@moves`, `@max_HP` and `@current-HP` scores. It also enables behaviours such as display the series of `@moves` unique to the monster object, display menu of moves, enable user input to decide upon a `move`.  
 * `move.rb` is a smaller class which simply initialises a `move` object, each with its own `speed` and `damage` values that can be applied to a player's `@current_HP` during gameplay. 
 
-Towards the later stages of code refactoring, an additional class was created to handle only displaying feedback loops such as the welcome screens, victory and defeat screens --- the `messages.rb` class.
+Towards the later stages of code refactoring, an additional class `messages.rb` was created to handle only displaying feedback screens such as the initial welcome screen, victory and defeat screens.
 
 ## Build Status
 The current product is a completed, functional proof-of-concept, with many extensible features identified by the team for future exploration. 
@@ -78,7 +85,13 @@ The *Monster Smash* application was developed over approximately two and a half 
 The team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
 
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/CodeStructure2.JPG)
-![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/UserInput_flowchart.JPG)
+
+## Record of Planning Progress
+* [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/images/UserInput_flowchart.JPG)
+* [Early Objects and class](https://github.com/matthew-puku/monster-smash/blob/master/images/Code_structure.JPG)
+* [Early Battle flow chart](https://github.com/matthew-puku/monster-smash/blob/master/images/BattleStructure.JPG)
+* [Battle flow chart]
+* [User flow chart]
 
 The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
 
@@ -89,6 +102,8 @@ The workload was distributed using [Trello](https://trello.com/b/mWeDQSQo/monste
 ## Testing
 
 Rigorous user input testing was conducted to capture as many instances of edge cases as possible. A detailed snapshot of the test cases can be accessed [here](https://docs.google.com/spreadsheets/d/1XyPPReGf2S60YSt3XIqf5JUpHT3cRB2FRkK1rHgxnoI/edit#gid=0). 
+
+[!alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/method_test_example.png)
 
 ## Accessibility
 
