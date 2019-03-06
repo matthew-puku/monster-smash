@@ -19,7 +19,7 @@ def welcome_screen
     puts
     puts a.asciify("Monster Smash!")
     puts "------------------------ PRESS ANY KEY TO CONTINUE --------------------------"
-    STDIN.getch                                                                                                              
+    STDIN.getch
     print "            \r" # extra space to overwrite in case next sentence is short
 end
 
@@ -30,7 +30,7 @@ def victory_screen
     puts
     puts b.asciify("           YOU WON !")
     puts "------------------------ PRESS ANY KEY TO CONTINUE --------------------------"
-    STDIN.getch                                                                                                              
+    STDIN.getch
     print "            \r" # extra space to overwrite in case next sentence is short
 end
 
@@ -41,7 +41,7 @@ def defeat_screen
     puts
     puts c.asciify("         YOU LOST !")
     puts "------------------------ PRESS ANY KEY TO CONTINUE --------------------------"
-    STDIN.getch                                                                                                              
+    STDIN.getch
     print "            \r" # extra space to overwrite in case next sentence is short
 end
 
@@ -52,6 +52,6 @@ def quit_screen
     puts
     puts d.asciify("  GAME OVER !")
     puts "------------------------ PRESS ANY KEY TO QUIT --------------------------"
-    STDIN.getch                                                                                                              
+    STDIN.getch
     print "            \r" # extra space to overwrite in case next sentence is short
 end
