@@ -40,10 +40,10 @@ class Monster
     end
 end
 
-Frank = Monster.new("Frankenstein's Monster", 150, 50, [Smash])
+Frank = Monster.new("Frankenstein's Monster", 150, 50, [Smash, Rapid_Attack, Thrash, Bash])
 
 
-Jerry = Monster.new("Jerry Seinfeld", 120, 50, [Smash])
+Jerry = Monster.new("Jerry Seinfeld", 120, 50, [Smash, Rapid_Attack, Thrash, Bash])
 # Smash.use!(Frank, Jerry)
 # Dracula = Monster.new("Dracula", 100, 100, [Smash, Rapid_Attack, Thrash, Bash])
 # Wolfman = Monster.new("Wolfman", 150, 150, [Smash, Rapid_Attack, Thrash, Bash]) 

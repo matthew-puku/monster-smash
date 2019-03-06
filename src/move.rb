@@ -32,16 +32,33 @@ class Attack < Move
     end
 end
 
-# initialise new moves with respective damage counts and speed counts
-Smash = Attack.new("Smash", 30, 95, 50)
-# Rapid_Attack = Move.new("Rapid Attack", 15, 90)
-# Thrash = Move.new("Thrash", 20, 70)
-# Bash = Move.new("Bash", 35, 10)
+# DEV NOTE: it made more sense to us to put the move data in move.rb next to the classes referenced, for easier understanding.
+# Additionally, parsing hashes into constructors is tedious.
+Smash = Attack.new("Smash",
+    30, # speed
+    95, # accuracy
+    50  # damage
+)
+Rapid_Attack = Attack.new("Rapid Attack",
+    95, # speed
+    95, # accuracy
+    15  # damage
+)
+Thrash = Attack.new("Thrash",
+    70, # speed
+    70, # accuracy
+    30  # damage
+)
+Bash = Attack.new("Bash",
+    10, # speed
+    95, # accuracy
+    40  # damage
+)
 # Boost_Speed = Move.new("Boost Speed", 10, 90)
 # Berserk = Move.new("Berserk", 50, 10)
 # Leeching_Bite = Move.new("Leeching Bite", 10, 10)
 
-# puts Smash.name
-# puts Smash.speed
-# puts Smash.accuracy
-# puts Smash.damage
+puts Smash.name
+puts Smash.speed
+puts Smash.accuracy
+puts Smash.damage
