@@ -1,28 +1,33 @@
 # Monster Smash Ruby Application
 
 ## Description
-‘Monster Smash’ is a Ruby text adventure application built to explore principles of DRY scripting, modularisation, encapsulation, and object-oriented programming. This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must be the first to deplete the opponent’s (program) health score (HP). 
+**‘Monster Smash’** is a single-player, text adventure game built using Ruby to explore principles of DRY scripting, modularisation, encapsulation, and object-oriented programming. 
+
+This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must be the first to deplete the opponent’s (computer) health score (HP). 
 
 ## Motivation
 The team wanted to use the assessment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun and entertaining vehicle. 
 
-Other non-game ideas to fulfil the assessment were also explored, such as
+Other non-game ideas were also explored, such as
 
-- A *journal app* which takes in user input as string with a daily mood category.
+- A **journal app** which takes in user input as string with a daily mood category.The user input will be parsed and searched for recurring keywords, which in turns trigger a ‘mood’ category. 
 
-The user input will be parsed and searched for recurring keywords, which in turns trigger a ‘mood’ category. For example, a diary entry with multiple instances of words such as ‘fun’, ‘happy’, ‘satisfied’, ‘great’, ‘awesome’ will automatically generate a mood category of “Joy”. Inversely, an entry populated by ‘tired’, ‘exhausted’, ‘delay’, ‘moody’, ‘blue’ words could lead to a mood category of “Sad”. The mood category will be colour matched using the gem ‘colorize’.
+For example, a diary entry with multiple instances of words such as ‘fun’, ‘happy’, ‘satisfied’, ‘great’, ‘awesome’ will automatically    generate a mood category of “Joy”. Inversely, an entry populated by ‘tired’, ‘exhausted’, ‘delay’, ‘moody’, ‘blue’ words could lead to a mood category of “Sad”. The mood category will be colour matched using the ruby gem ‘colorize’.
 
-- A *daily expense budgeting app*, which tabulates the variety of expenses incurred according to a tag system. User can input the name, description, cost, and assign a tag to each entry. The user can generate a table of weekly cost on command.
+- A **daily expense budgeting app**, which tabulates all financial expenses incurred during a week using to a tag taxonomy. Users can input the name, description to a cost, and assign a tag to each entry. The user can generate a table of weekly cost on command.
 
 The turn-based game was chosen in the end as a great opportunity to combine high personal interest, coding challenge and project management possibilities. 
 
 ## Features and Functionality
-This is a single-player game where the user select “moves” via text-input in a series of turns against the computer. Both the user and computer will begin the game with full health score (HP). And with each selected ‘move’, each player's health score (HP) will deplete by a specific damage count. In the case of a draw where both user and computer selects the exact same move, a speed advantage score will decide which move will deal a greater damage to HP. A series of checking gateways (control structures) continually checks and compares the health score (HP) of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
+*Monster Smash* is a single-player game where the user select from an array of `@moves` via text-input in a series of turns against the computer. Both the user and computer will begin the game with full health score `@max_HP`. And with each selected `move`’, each player's health score (`@HP_current`) will deplete by a specific damage count. In the case of a draw where both user and computer selects the exact same move, a speed advantage score will decide which move will deal a greater damage to HP.
+
+A series of checking gateways (control structures) continually checks and compares the health score (`@current_HP`) of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
 
 ### Prototype features
 - Receive user text input to decide moves
 - Establish ‘move’ objects each with speed and damage attributes
-- Establish a character class ‘monster’ with attributes including current_HP, max_HP and to possess an array of moves 
+- Establish a character class ‘monster’ with attributes including `@current_HP`, `@max_HP`, an array of `@moves` 
+- Each `move` has unique `speed` and `damage` values which will deplete `@current_HP` at different rates
 - Display health scores of the user and computer
 - Increment or subtract health scores from user and computer
 - Compare health scores between user and computer (also catches errors and edge cases)
@@ -39,17 +44,36 @@ Users can only interact with this terminal application via keyboard input.
 - Implement ASCII art for each move selected
 - Allow for replay of battle rounds
 
+## Code Structure
+
+It was decided from early in the planning stage that the MVP will be structured in the following manner
+* `main.rb` is the logic trigger to start the game. 
+* `battle.rb` initialises a battle instance which will contain the gameplay mechanics of comparing `@current-HP`, and applying the move to a player. 
+* `monster.rb` initialises a monster object which will have an array of `@moves`, `@max_HP` and `@current-HP` scores. It also enables behaviours such as display the series of `@moves` unique to the monster object, display menu of moves, enable user input to decide upon a `move`.  
+* `move.rb` is a smaller class which simply initialises a `move` object, each with its own `speed` and `damage` values that can be applied to a player's `@current_HP` during gameplay. 
+
+Towards the later stages of code refactoring, an additional class was created to handle only displaying feedback loops such as the welcome screens, victory and defeat screens --- the `messages.rb` class.
+
 ## Build Status
 The current product is a completed, functional proof-of-concept, with many extensible features identified by the team for future exploration. 
 
 ## Instructions for use
 
-1. Download and unzip the files on your local computer. 
-2. In the terminal command line, navigate to the src folder by inputting the command "cd src"
-3. Input the command "ruby main.rb", without the quotation marks. 
-4. Program runs. 
+1. Follow these instructions to [download and install](https://www.ruby-lang.org/en/documentation/installation/) Ruby on your computer. 
+2. Download and unzip the files on your local computer. 
+3. In the terminal command line, navigate to the src folder by inputting the command 
+  ```
+  > cd src 
+  ```
+4. Input the below command in the terminal command line.  
+  ```
+  > ruby main.rb
+  ```
+5. Program runs. 
 
 ## Design and Planning progress
+
+The *Monster Smash* application was developed over approximately two and a half days between Matthew Puku and Rachel Wong. 
 
 The team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
 
@@ -58,9 +82,29 @@ The team used lo-fi prototyping to map out user input and to decide upon the pre
 
 The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
 
+The workload was distributed using [Trello](https://trello.com/b/mWeDQSQo/monster-battle-ruby-app), tracked alongside a dissection of the client brief (assignment rubric).
+
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/Trello1.png)
+
+## Testing
+
+Rigorous user input testing was conducted to capture as many instances of edge cases as possible. A detailed snapshot of the test cases can be accessed [here](https://docs.google.com/spreadsheets/d/1XyPPReGf2S60YSt3XIqf5JUpHT3cRB2FRkK1rHgxnoI/edit#gid=0). 
+
+## Accessibility
+
+The [Web Content Accessibility Guidelines 2.0](https://www.w3.org/WAI/standards-guidelines/wcag/) was consulted adjacent to the coding process. All functionality of the content on *Monster Smash* is operable through a keyboard interface without requiring specific timings for individual keystrokes. There is sufficient clarity in the visual design (black and white) with clear, simple English instructions prompting user input at every step. 
+
+However, the development team acknowledges that until the product has been live-tested with the target demographic users (focus group testing), it is not immediately clear whether *Monster Smash* has adequately catered for all users from a spectrum of ableness based on the [WCAG2.0](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0).
+
+## Copyright, ethical, social issues
+
+As a text-based application with comparatively primitive controls, the development team did not foresee the application would raise any questions of moral, social, ethical impropriety. 
+
+During the development process, copyright issues were discussed in terms of selecting an appropriate character theme that is already in the public domain. The generic halloween monsters was eventually decided to circumvent copyright issues with other popular culture characters such as Pokemon. 
+
 ## License
 
-Copyright (c) 2019 Matthew Puku, Rachel Wong
+**Copyright (c) 2019 Matthew Puku, Rachel Wong** for [Coder Academy](https://coderacademy.edu.au).
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
