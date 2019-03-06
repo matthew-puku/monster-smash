@@ -21,20 +21,20 @@ class Battle
             @outcome = :combatant0win
         end
     end
-    def display_commencement
+    def display_commencement # Prints a nice message for the start of a battle.
         slow_puts("The battle begins! #{@combatants[0].name} vs. #{@combatants[1].name}")
     end
     def display_choices(monster) # Returns a monster's formatted movelist plus the option to quit.
         output = monster.display_moves + "or type (Q)uit to give up."
         return output
     end
-    def display_healths
+    def display_healths # Displays erstaz healthbars
         slow_puts("YOU: #{combatants[0].current_HP.to_i}HP\nFOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
     end
-    def user_select_move(combatant)
+    def user_select_move(combatant) # Makes user select a move or quit.
         validating_input = true
         selected_move = nil
-        while validating_input # In this loop, the player can choose a move or quit
+        while validating_input
             display_healths
             puts display_choices(@combatants[0])
             user_input = gets.chomp.downcase
@@ -45,7 +45,7 @@ class Battle
                 validating_input = false # exits while loop
             elsif user_input == "q" or user_input == "quit"
                 @outcome = :quit # change bout outcome to inform main.rb of user desire to quit.
-                return # break out of the function. DEV NOTE: there may be a nicer way to do this but time does not permit research.
+                validating_input = false # exits while loop
             else
                 slow_puts("Invalid input! Please try again.", 0.5)
             end
@@ -81,11 +81,3 @@ class Battle
         update_outcome! # Keep main.rb updated on battle state.
     end
 end
-
-
-
-# puts Smash
-# puts Frank
-# puts bout.display_choices(bout.combatants[0])
-# bout.execute_move(Frank.random_move, Frank, Jerry)
-#beep

@@ -42,11 +42,8 @@ end
 
 Player = Monster.new("You", 150, 50, [Smash, Rapid_Attack, Thrash, Bash, Leeching_Bite])
 Frank = Monster.new("Frankenstein's Monster", 150, 50, [Smash, Thrash])
-
-
-# Jerry = Monster.new("Jerry Seinfeld", 120, 50, [Smash, Rapid_Attack, Thrash, Bash])
-# Smash.use!(Frank, Jerry)
 Dracula = Monster.new("Dracula", 150, 60, [Rapid_Attack, Thrash, Bash, Leeching_Bite])
+
 # Wolfman = Monster.new("Wolfman", 150, 50, [Smash, Rapid_Attack, Thrash, Bash]) 
 # Igor = Monster.new("Igor", 100, 50, [Smash, Rapid_Attack, Thrash, Bash])
 # Zombie = Monster.new("Zombie", 120, 40, [Smash, Rapid_Attack, Thrash, Bash])
