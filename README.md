@@ -141,7 +141,7 @@ The current product is a completed, functional proof-of-concept, with many exten
 
 The *Monster Smash* application was developed over approximately two and a half days by Matthew Puku and Rachel Wong. 
 
-The team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
+In the beginning, the team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
 
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/docs/CodeStructure2.JPG)
 
@@ -153,12 +153,15 @@ Refactoring the code to keep it extensible and readable for future development w
 
 Healthy time management was also difficult in maintaining a balance between researching for gems, deciding upon MVP functionalities, deciding which functionalities to relegate as 'nice-to-have' for future exploration.
 
+![alt_text0(https://github.com/matthew-puku/monster-smash/blob/master/docs/timeline.png)
+
 ## Record of Planning Progress
 * [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/docs/UserInput_flowchart.JPG)
 * [Early Objects and class](https://github.com/matthew-puku/monster-smash/blob/master/docs/Code_structure.JPG)
 * [Early Battle flow chart](https://github.com/matthew-puku/monster-smash/blob/master/docs/BattleStructure.JPG)
 * [Final Objects and Classes](https://github.com/matthew-puku/monster-smash/blob/master/docs/Objects_classes.png)
 * [User flow chart](https://github.com/matthew-puku/monster-smash/blob/master/docs/flowchart.pdf)
+* [Early timeline](https://github.com/matthew-puku/monster-smash/blob/master/docs/Timeline.JPG)
 
 ## Project Timeline 
 
