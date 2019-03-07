@@ -1,5 +1,6 @@
 require_relative "messages.rb"
 
+# Creates a move 
 class Move
     attr_reader :name, :speed, :accuracy
     def initialize(name, speed, accuracy)
@@ -16,6 +17,7 @@ class Move
     end
 end
 
+# Checking gateway for deciding whether attack (damage) to be applied to opponent on probability
 class Attack < Move
     attr_reader :damage
 
@@ -23,12 +25,18 @@ class Attack < Move
         super(name, speed, accuracy)
         @damage = damage # An integer. The base damage of the attack.
     end
+    
+    # Accuracy vs Dodge check
+    # Added a random number generator to the check to avoid draw situation
+    # If player's accuracy count > opponent's dodge, apply damage to opponent's HP
     def use!(user, opponent)
         super(user, opponent)
         if @accuracy + rand(1..100) > opponent.dodge + 50 # Accuracy check vs. dodge
             slow_puts "It hit for #{damage} damage."
             opponent.current_HP -= @damage
             return :hit
+            
+        # If player's accuracy count < opponent's dodge, do not apply dmaage to HP
         else
             slow_puts "...but it missed."
             return :miss
@@ -36,6 +44,7 @@ class Attack < Move
     end
 end
 
+# Create different move objects
 # DEV NOTE: it made more sense to us to put the move data in move.rb next to the classes referenced, for easier understanding.
 # Additionally, parsing hashes into constructors is tedious.
 Smash = Attack.new("Smash",
