@@ -18,17 +18,23 @@ end
 
 class Attack < Move
     attr_reader :damage
-
+    
     def initialize(name, speed, accuracy, damage)
         super(name, speed, accuracy)
         @damage = damage # An integer. The base damage of the attack.
     end
+    
+    # Checks the accuracy attribute against the opponent's dodge variable to decide whether to apply the damage to HP
+    # Accuracy is added to a random number and dodge is added 50 to avoid a draw situation
+    # If accuracy > Dodge, apply hit and apply the damage to HP
     def use!(user, opponent)
         super(user, opponent)
         if @accuracy + rand(1..100) > opponent.dodge + 50 # Accuracy check vs. dodge
             slow_puts "It hit for #{damage} damage."
             opponent.current_HP -= @damage
             return :hit
+            
+        # If accuracy < Dodge, miss and do not apply the damage to HP
         else
             slow_puts "...but it missed."
             return :miss
@@ -59,11 +65,14 @@ Bash = Attack.new("Bash",
     40  # damage
 )
 
+# Special move that increases player's HP proportionate to applied damage to opponent's HP 
 class LifestealAttack < Attack # Like an Attack, but steals some HP from the opponent
     def initialize(name, speed, accuracy, damage, lifesteal_factor)
         super(name, speed, accuracy, damage)
         @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1 = 100%, 1.5 = 150%, etc.
     end
+    
+    # if the move is a hit (not a miss), increase player's HP and decrease the opponent's HP 
     def use!(user, opponent)
         move_outcome = super(user, opponent)
         if move_outcome == :hit
