@@ -8,7 +8,7 @@ Source code: https://github.com/matthew-puku/monster-smash
 This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must deplete the opponent’s (computer) health score (HP) before the computer depletes theirs. 
 
 ## Motivation
-The team wanted to use this assignment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun and entertaining vehicle. 
+The team wanted to use this assignment opportunity to consolidate what was learnt within the first two weeks of [Coder Academy bootcamp course](https://coderacademy.edu.au/) using a fun and entertaining vehicle. 
 
 Other project ideas were also explored, including
 
@@ -178,15 +178,15 @@ Due to the time constraints of the project, user acceptance testing was not cond
 
 ## Accessibility
 
-The [Web Content Accessibility Guidelines 2.0](https://www.w3.org/WAI/standards-guidelines/wcag/) was consulted adjacent to the coding process. All functionality of the content on *Monster Smash* is operable through a keyboard interface without requiring specific timings for individual keystrokes. There is sufficient clarity in the visual design (black and white) with clear, simple English instructions prompting user input at every step. 
+The [Web Content Accessibility Guidelines 2.0](https://www.w3.org/WAI/standards-guidelines/wcag/) was consulted adjacent to the coding process. All functionality of the content on *Monster Smash* is operable through a keyboard interface without requiring specific timings for individual keystrokes. There is sufficient clarity in the visual design (black and white) with clear, simple English instructions prompting user input at every step. The only possible point of improvement could be to increase the text sizes for easier screen-reading. 
 
 However, the development team acknowledges that until the product has been live-tested with the target demographic users (focus group testing), it is not immediately clear whether *Monster Smash* has adequately catered for all users from a spectrum of ableness based on the [WCAG 2.0](https://www.w3.org/WAI/WCAG21/quickref/?versions=2.0).
 
 ## Copyright, ethical, social issues
 
-As a text-based application with comparatively primitive controls (alphabetical), the development team did not foresee the application would raise any questions of moral, social, ethical consequences. 
+As a text-based application with comparatively primitive controls (alphabetical), the development team did not foresee the application would raise any questions of moral, social, ethical consequences. This is entirely a work of fiction, as a homage to other highly sucessful game franchises such as Pokemon and Dungeons & Dragons. There is no use of imagery or text that incites violence or an unpleasant response. The game is designed purely to entertain rather than to provoke a reaction or send a political message.
 
-Copyright issues were, however, discussed in terms of selecting an appropriate game character theme that is already in the public domain. This is entirely a work of fiction therefore, generic halloween monsters was decided upon to circumvent copyright issues with using  popular culture franchises (e.g.Pokemon). 
+Copyright issues were, however, discussed in terms of selecting an appropriate game character theme that is already in the public domain. Generic halloween monsters was decided upon to circumvent copyright issues with using  popular culture franchises (e.g.Pokemon). The turn-based game mechanic is long-standing gaming tradition with no specific patent attached, to the knowledge of developers. 
 
 ## License
 
