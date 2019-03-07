@@ -141,11 +141,11 @@ The current product is a completed, functional proof-of-concept, with many exten
 
 The *Monster Smash* application was developed over approximately two and a half days by Matthew Puku and Rachel Wong. 
 
-In the beginning, the team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
+In the start, the team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
 
 ![alt text](https://github.com/matthew-puku/monster-smash/blob/master/docs/CodeStructure2.JPG)
 
-Blocking out the objects and classes proved to be a relatively straight forward exercise. It was immediatley clear to the development team that separate classes are required for move, monster and battle with a `main.rb` as the external trigger to kickstart the program. 
+Blocking out the objects and classes proved to be a relatively straight forward exercise. It was immediatley clear to the development team that separate classes are required for move, monster and battle with a `main.rb` as the external trigger to kickstart the program. Testing was done as the coding progressed iteratively, testing each user input and checking method in turn. 
 
 The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
 
@@ -153,7 +153,7 @@ Refactoring the code to keep it extensible and readable for future development w
 
 Healthy time management was also difficult in maintaining a balance between researching for gems, deciding upon MVP functionalities, deciding which functionalities to relegate as 'nice-to-have' for future exploration.
 
-![alt_text0(https://github.com/matthew-puku/monster-smash/blob/master/docs/timeline.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/timeline.png)
 
 ## Record of Planning Progress
 * [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/docs/UserInput_flowchart.JPG)
