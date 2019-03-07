@@ -1,5 +1,7 @@
 # Monster Smash Ruby Application
 
+Source code: https://github.com/matthew-puku/monster-smash
+
 ## Description
 **‘Monster Smash’** is a single-player, text adventure game built using Ruby to explore principles of DRY scripting, modularisation, encapsulation, and object-oriented programming. 
 
