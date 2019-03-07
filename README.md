@@ -170,7 +170,7 @@ Planning, research and conceptualising the code structure was primarily achieved
 
 ## Testing
 
-Rigorous user input testing was conducted to capture as many instances of edge cases as possible. A detailed listing of test cases can be reviewed [here](https://docs.google.com/spreadsheets/d/1XyPPReGf2S60YSt3XIqf5JUpHT3cRB2FRkK1rHgxnoI/edit#gid=0). 
+Rigorous user input testing was conducted to capture as many instances of edge cases as possible. A detailed listing of test cases can be reviewed [here](https://github.com/matthew-puku/monster-smash/blob/master/docs/Monster%20Smash%20Testing%20-%20Sheet1.pdf). 
 
 Due to the time constraints of the project, user acceptance testing was not conducted. However, during the iterative development process, smaller unit testing was conducted with each new feature added. 
 
@@ -186,13 +186,13 @@ However, the development team acknowledges that until the product has been live-
 
 As a text-based application with comparatively primitive controls (alphabetical), the development team did not foresee the application would raise any questions of moral, social, ethical consequences. 
 
-Copyright issues were, however, discussed in terms of selecting an appropriate game character theme that is already in the public domain. The generic halloween monsters was eventually decided to circumvent copyright issues with using existing popular culture characters franchises (e.g.Pokemon). 
+Copyright issues were, however, discussed in terms of selecting an appropriate game character theme that is already in the public domain. This is entirely a work of fiction therefore, generic halloween monsters was decided upon to circumvent copyright issues with using  popular culture franchises (e.g.Pokemon). 
 
 ## License
 
 **Copyright (c) 2019 Matthew Puku, Rachel Wong** for [Coder Academy](https://coderacademy.edu.au).
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to [use, copy, modify, merge, publish, distribute](https://github.com/matthew-puku/monster-smash/blob/master/CONTRIBUTING.md) and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
 The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
