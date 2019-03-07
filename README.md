@@ -3,16 +3,16 @@
 ## Description
 **‘Monster Smash’** is a single-player, text adventure game built using Ruby to explore principles of DRY scripting, modularisation, encapsulation, and object-oriented programming. 
 
-This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must be the first to deplete the opponent’s (computer) health score (HP). 
+This terminal application follows the common mechanics of popular turn-based games where users play against the computer by text-selecting a choice of “moves”. To win the game, the user must deplete the opponent’s (computer) health score (HP) before the computer depletes theirs. 
 
 ## Motivation
 The team wanted to use this assignment opportunity to consolidate what was learnt so far in the Coder Academy bootcamp course using a fun and entertaining vehicle. 
 
 Other project ideas were also explored, including
 
-- A **journal app** which takes in user input as string with a daily mood category.The user input will be parsed and searched for recurring keywords, which in turns trigger a ‘mood’ category. 
+- A **journal app** which takes in user input as string with a daily mood category. The user input would be parsed and searched for recurring keywords, which in turn triggers a ‘mood’ category. 
 
-For example, a diary entry with multiple instances of words such as ‘fun’, ‘happy’, ‘satisfied’, ‘great’, ‘awesome’ will automatically    generate a mood of “Joy”. Inversely, an entry populated by ‘tired’, ‘exhausted’, ‘delay’, ‘moody’, ‘blue’ words could lead to a mood category of “Sad”. The mood category will then be colour matched to the ruby gem ‘colorize’.
+For example, a diary entry with multiple instances of words such as ‘fun’, ‘happy’, ‘satisfied’, ‘great’, ‘awesome’ will automatically generate a mood of “Joy”. Inversely, an entry populated by ‘tired’, ‘exhausted’, ‘delay’, ‘moody’, ‘blue’ words could lead to a mood category of “Sad”. The mood category will then be colour matched to the ruby gem ‘colorize’.
 
 - A **daily expense budgeting app**, which tabulates all financial expenses incurred during a week using to a tag taxonomy. Users can input the name, description to a cost, and assign a tag to each entry. The user can generate a table of weekly cost on command.
 
@@ -25,29 +25,30 @@ From the welcome screen, both the user and computer will start the game with ful
 
 ![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/1.%20welcome_screen.png)
 
-The user will be prompted to select a `move` to apply to the opponent. Both the user and computer players have a choice of four moves to 
-play in each turn. 
+The user will be prompted to select a `move` to apply to the opponent. Both the user and computer players have a choice of moves to play each turn. 
 
 Each user/computer has the following
-- `@moves` a series of moves
-- `dodge` attribute that will enable opponent's move to miss and not deplete their `@current_HP`
-
+- `HP`, which causes defeat if it falls below 0
+- `dodge`, attribute that makes opponent's moves miss and have no effect
+- `moves`, a list of moves available to use
 
 Each move has the following
-- `speed` score that is compared against the opponent's. Whoever's `speed` score is higher will play the `move` first. 
-- `damage` score that can deplete the opponent's `@current_HP` 
-- `accuracy` score that will enable the `damage` to deplete the opponent's `@current_HP` 
-- For the special **Leeching_bite** move, there is a `lifesteal_factor` which not only deals a damage score on the opponent's `@current_HP` but also increases the player's own `@current_HP` proportionate to the damage dealt.
+- `speed` score that is compared against the opponent's move. Whichever move has the higher `speed` score is will go first, sometimes ending the battle before the opponent can act.
+- `accuracy` score that is combined with a random element and compared against a dodge score (usually the opponent's) to determine whether the move has any effect
+- `damage` score that determines how much `HP` the opponent loses when the attack hits
+- For the special **Leeching_bite** move, there is a `lifesteal_factor` which determines how much of the damage dealt by the move heals the user.
 
 ![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/step1.png)
 
-And with each selected `move`, each player's health score `@current_HP` will deplete by a specific damage count. 
+Frank selects a move...
 
 ![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/step2.png)
 
+...and deals damage
+
 ![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/%20step%203.png)
 
-In the case of a draw where both user and computer selects the exact same `move`, a speed advantage score will decide which move will deal a greater damage to `@current_HP`.
+If the user and computer choose moves with the same speed, a tiebreak constant ensures the user goes first.
 
 ![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/step%204.png)
 
@@ -62,28 +63,29 @@ The end goal for the user is to deplete the computer’s health score before his
 - Establish ‘move’ objects each with speed and damage attributes
 - Establish a character class ‘monster’ with attributes including `@current_HP`, `@max_HP`, an array of `@moves` 
 - Each `move` has unique `speed` and `damage` values which will deplete `@current_HP` at different rates
-- A random numerical generator selects a move for the computer player, which includes a `miss` option that does not deplete `@current_HP` at all
+- A random numerical generator selects a move for the computer player
 - Display health scores of the user and computer
 - Increment or subtract health scores from user and computer
 - Compare health scores between user and computer (also catches errors and edge cases)
 - Display welcome and quit screens
 - Display victory and defeat screens with scores
 - User can quit at any point of the running application
-- Implemented ASCII art for the welcome, victory, defeat screens using a gem like [Artii](https://github.com/miketierney/artii) in `messages.rb`
+- Implemented ASCII art for the welcome, victory, defeat screens using a the [Artii](https://github.com/miketierney/artii) gem in `messages.rb`
 
 Users can only interact with this terminal application via keyboard input.
 
 ### Extensible features
-- Implement a best of 3 battle rounds in `battle.rb`
-- User and computer can level-up as they advance to the next battle round. Possibly implement an control structure in `battle.rb`.
-- Allow for replay of battle rounds in `battle.rb`
-- More monster or characters can be created in `monster.rb`
-- Different moves can be created in `moves.rb`
-- Randomly choose a monster opponent to play against, which may require the creation of a new class like a gallery
-- Allow the user to choose their own monster character, which again may require extending `main.rb` and or `battle.rb`
-- Convert `@max_HP` and `@current_HP` into a visual progress bar using the gem [ruby-progressbar](https://github.com/jfelchner/ruby-progressbar)
+The code was designed to be easily extensible. Most of the following features would be easy to implement.
+- Chain multiple battles together in a gauntlet by altering `main.rb`
+-- Allow user to "learn a move" from each monster they defeat, by creating a `loot.rb` file with the required logic
+- Extra monsters e.g. skeleton, zombie in `monster.rb`
+- Extra moves e.g. stat buffs, debuffs in `moves.rb`
+- Randomly choose a monster opponent to play against, which may require the creation of a new class like a gallery (which might sort monsters according to difficulty or theme)
+- Player vs. player combat
+- Nicer visualisation of `@max_HP` and `@current_HP` using the gem [ruby-progressbar](https://github.com/jfelchner/ruby-progressbar)
 - Implement ASCII art for each move selected using [Artii](https://github.com/miketierney/artii) in `monster.rb`
 - Colorize the progress bar using the [Colorize](https://github.com/fazibear/colorize) ruby gem
+- Colorize game text
 
 ## Code Structure
 
@@ -93,7 +95,9 @@ It was decided from early in the planning stage that the MVP will be structured 
 * `monster.rb` initialises a monster object which will have an array of `@moves`, `@max_HP` and `@current-HP` scores. It also enables behaviours such as display the series of `@moves` unique to the monster object, display menu of moves, enable user input to decide upon a `move`.  
 * `move.rb` is a smaller class which simply initialises a `move` object, each with its own `speed` and `damage` values that can be applied to a player's `@current_HP` during gameplay. 
 
-Towards the later stages of code refactoring, an additional class `messages.rb` was created to handle only displaying feedback screens such as the initial welcome screen, victory and defeat screens.
+Towards the later stages of code refactoring, an additional file `messages.rb` was created to handle only displaying feedback screens such as the initial welcome screen, victory and defeat screens.
+
+Splitting into multiple files made the code much easier to debug and enabled us to work on different things at the same time (parallelisation).
 
 ### Gems
 
@@ -133,7 +137,7 @@ The current product is a completed, functional proof-of-concept, with many exten
 
 ## Design and Planning progress
 
-The *Monster Smash* application was developed over approximately two and a half days between Matthew Puku and Rachel Wong. 
+The *Monster Smash* application was developed over approximately two and a half days by Matthew Puku and Rachel Wong. 
 
 The team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
 
@@ -143,7 +147,7 @@ Blocking out the objects and classes proved to be a relatively straight forward 
 
 The key difficulty faced by the team was in clarifying each step of a single battle, what happens with each user input (move) versus computer feedback. 
 
-Refactoring the code to keep it extensible, readable for future development was a challenging exercise. 
+Refactoring the code to keep it extensible and readable for future development was a challenging exercise. 
 
 Healthy time management was also difficult in maintaining a balance between researching for gems, deciding upon MVP functionalities, deciding which functionalities to relegate as 'nice-to-have' for future exploration.
 
