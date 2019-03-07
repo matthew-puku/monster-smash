@@ -46,22 +46,26 @@ class Battle
     def user_select_move(combatant) 
         validating_input = true
         selected_move = nil
-        
-        # if user selects a valid move from the list, display the confirmation of choice
         while validating_input
+            # Display useful information to inform player choice before asking for input
             display_healths
             puts display_choices(@combatants[0])
+            
+            # Get user input
             user_input = gets.chomp.downcase
             system "clear"
-            search_result = combatants[0].search_moves(user_input) # Storing in a variable to avoid running the function twice (once for conditional and once to store a success)
-            if search_result != nil # executes if valid move input was entered
+            search_result = combatants[0].search_moves(user_input) # This is store in a variable to avoid running the function twice
+                                                                   # (once for the conditional and once to return on success)
+            
+            # Check the input
+            if search_result != nil                         # Valid move input
                 return search_result 
-                validating_input = false # exits while loop
-            elsif user_input == "q" or user_input == "quit"
+                validating_input = false
+            elsif user_input == "q" or user_input == "quit" # Valid quit input
                 @outcome = :quit # change bout outcome to inform main.rb of user desire to quit.
-                validating_input = false # exits while loop
-            else
-                slow_puts("Invalid input! Please try again.", 0.5) # error handling
+                validating_input = false
+            else                                            # Invalid input
+                slow_puts("Invalid input! Please try again.", 0.5)
             end
         end
     end
@@ -70,13 +74,14 @@ class Battle
     def run_round( 
         combatant0move = user_select_move(combatants[0]), # By default, the user selects a move with input...
         combatant1move = @combatants[1].random_move)      # ...and the computer selects randomly
+        
         # Check neither combatant chose to quit
         if @outcome == :quit 
             return # Stops executing this method
         end
 
-        # Decide who will go first by comparing the speed attribute
-        # Human character will always have speed advantage to avoid a draw situation
+        # Decide who will go first by comparing the speed of the moves
+        # Human character has a tiny speed advantage to avoid a draw situation
         if combatant0move.speed + @player_0_speed_advantage > combatant1move.speed # Player first
             first_move = combatant0move
             first_mover = @combatants[0]
