@@ -24,17 +24,19 @@ class Attack < Move
         @damage = damage # An integer. The base damage of the attack.
     end
     
-    # Checks the accuracy attribute against the opponent's dodge variable to decide whether to apply the damage to HP
-    # Accuracy is added to a random number and dodge is added 50 to avoid a draw situation
-    # If accuracy > Dodge, apply hit and apply the damage to HP
+
     def use!(user, opponent)
-        super(user, opponent)
-        if @accuracy + rand(1..100) > opponent.dodge + 50 # Accuracy check vs. dodge
+        super(user, opponent) # This will puts the message specificied in the Move class
+
+        # Checks the accuracy attribute against the opponent's dodge stat to decide whether the move takes effect.
+        # Accuracy is added to a random number and dodge is added to 50 to allow for variation in outcomes
+        # If combined accuracy > combined dodge, apply the damage to HP and return :hit for use by subclass methods
+        if @accuracy + rand(1..100) > opponent.dodge + 50
             slow_puts "It hit for #{damage} damage."
             opponent.current_HP -= @damage
             return :hit
             
-        # If accuracy < Dodge, miss and do not apply the damage to HP
+        # If accuracy < Dodge, do not apply the damage to HP and return :miss for use by subclass methods
         else
             slow_puts "...but it missed."
             return :miss
@@ -74,7 +76,10 @@ class LifestealAttack < Attack # Like an Attack, but steals some HP from the opp
     
     # if the move is a hit (not a miss), increase player's HP and decrease the opponent's HP 
     def use!(user, opponent)
+        # Puts a message, returns the outcome of an accuracy check, and damages the opponent if applicable.
         move_outcome = super(user, opponent)
+
+        # If the accuracy check passed, this code will execute.
         if move_outcome == :hit
             healing = @damage * @lifesteal_factor
             user.current_HP += healing # heals user
