@@ -77,7 +77,7 @@ The end goal for the user is to deplete the computer’s health score before his
 Users can only interact with this terminal application via keyboard input.
 
 ### Extensible features
-The code was designed to be easily extensible. Most of the following features would be easy to implement.
+The code was designed to be easily extensible. The code is highly modular and DRY, so the following features would be easy to implement.
 - Chain multiple battles together in a gauntlet by altering `main.rb`
 -- Allow user to "learn a move" from each monster they defeat, by creating a `loot.rb` file with the required logic
 - Extra monsters e.g. skeleton, zombie in `monster.rb`
