@@ -3,6 +3,8 @@ require 'rubygems'
 require 'artii'
 require 'io/console'
 
+## Messages.rb outputs feedback screens (welcome, victory, defeat, quit) and also output of user prompts mimicking console capabilities.
+
 def slow_puts(string, delay = 1, press_any_key = true) # Puts given string to the screen gradually.
                                                        # delay controls printout speed
                                                        # press_any_key determines whether the user needs to press a button to continue
