@@ -23,7 +23,7 @@ The turn-based game was chosen in the end as a great opportunity to combine high
 
 From the welcome screen, both the user and computer will start the game with full health score `@max_HP`. 
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/1.%20welcome_screen.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/1.%20welcome_screen.png)
 
 The user will be prompted to select a `move` to apply to the opponent. Both the user and computer players have a choice of moves to play each turn. 
 
@@ -38,25 +38,25 @@ Each move has the following
 - `damage` score that determines how much `HP` the opponent loses when the attack hits
 - For the special **Leeching_bite** move, there is a `lifesteal_factor` which determines how much of the damage dealt by the move heals the user.
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/step1.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/step1.png)
 
 Frank selects a move...
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/step2.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/step2.png)
 
 ...and deals damage
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/%20step%203.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/%20step%203.png)
 
 If the user and computer choose moves with the same speed, a tiebreak constant ensures the user goes first.
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/step%204.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/step%204.png)
 
 A series of checking gateways (control structures) continually checks and compares the health score `@current_HP` of the user and computer to decide whether to advance the game further (victory, defeat or continue gameplay). 
 
 The end goal for the user is to deplete the computer’s health score before his or her health score is exhausted. 
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/Won.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/Won.png)
 
 ### Prototype features
 - Receive user text input to decide moves
@@ -129,7 +129,7 @@ The current product is a completed, functional proof-of-concept, with many exten
   > ruby main.rb
   ```
 7. If you get an error message like below asking you to update your bundler, input the below in terminal command line. 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/gemfile%20error.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/gemfile%20error.png)
   ```
   > gem update --system
   ```
@@ -141,7 +141,7 @@ The *Monster Smash* application was developed over approximately two and a half 
 
 The team used lo-fi prototyping to map out user input and to decide upon the preliminary code structure. Much of the application workflow was blocked out on paper in one afternoon brainstorming session. 
 
-![alt text](https://github.com/matthew-puku/monster-smash/blob/master/images/CodeStructure2.JPG)
+![alt text](https://github.com/matthew-puku/monster-smash/blob/master/docs/CodeStructure2.JPG)
 
 Blocking out the objects and classes proved to be a relatively straight forward exercise. It was immediatley clear to the development team that separate classes are required for move, monster and battle with a `main.rb` as the external trigger to kickstart the program. 
 
@@ -152,17 +152,17 @@ Refactoring the code to keep it extensible and readable for future development w
 Healthy time management was also difficult in maintaining a balance between researching for gems, deciding upon MVP functionalities, deciding which functionalities to relegate as 'nice-to-have' for future exploration.
 
 ## Record of Planning Progress
-* [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/images/UserInput_flowchart.JPG)
-* [Early Objects and class](https://github.com/matthew-puku/monster-smash/blob/master/images/Code_structure.JPG)
-* [Early Battle flow chart](https://github.com/matthew-puku/monster-smash/blob/master/images/BattleStructure.JPG)
-* [Final Objects and Classes](https://github.com/matthew-puku/monster-smash/blob/master/images/Objects_classes.png)
-* [User flow chart](https://github.com/matthew-puku/monster-smash/blob/master/images/flowchart.pdf)
+* [User Input Flowchart](https://github.com/matthew-puku/monster-smash/blob/master/docs/UserInput_flowchart.JPG)
+* [Early Objects and class](https://github.com/matthew-puku/monster-smash/blob/master/docs/Code_structure.JPG)
+* [Early Battle flow chart](https://github.com/matthew-puku/monster-smash/blob/master/docs/BattleStructure.JPG)
+* [Final Objects and Classes](https://github.com/matthew-puku/monster-smash/blob/master/docs/Objects_classes.png)
+* [User flow chart](https://github.com/matthew-puku/monster-smash/blob/master/docs/flowchart.pdf)
 
 ## Project Timeline 
 
 Project workload was distributed using [Trello](https://trello.com/b/mWeDQSQo/monster-battle-ruby-app), tracked alongside a dissection of the client brief (assignment rubric).
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/Trello1.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/Trello1.png)
 
 Planning, research and conceptualising the code structure was primarily achieved in one afternoon sitting by prototyping on paper. The coding was an iterative process spread across two afternoons between 5 March to 6 March.
 
@@ -172,7 +172,7 @@ Rigorous user input testing was conducted to capture as many instances of edge c
 
 Due to the time constraints of the project, user acceptance testing was not conducted. However, during the iterative development process, smaller unit testing was conducted with each new feature added. 
 
-![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/images/method_test_example.png)
+![alt_text](https://github.com/matthew-puku/monster-smash/blob/master/docs/method_test_example.png)
 
 ## Accessibility
 
