@@ -98,5 +98,5 @@ Leeching_Bite = LifestealAttack.new("Leeching Bite",
     1   # lifesteal_factor
 )
 
-# Boost_Speed = Move.new("Boost Speed", 10, 90)
-# Berserk = Move.new("Berserk", 50, 10)
+Boost_Speed = Move.new("Boost Speed", 10, 90)
+Berserk = Move.new("Berserk", 50, 10)
