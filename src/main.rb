@@ -25,3 +25,5 @@ end
 
 # Where HP is exhausted or Quit is triggered, game over screen
 quit_screen # defined in messages.rb
+
+system "clear"

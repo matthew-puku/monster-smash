@@ -24,7 +24,7 @@ end
 def welcome_screen
     system "clear"
     a = Artii::Base.new
-    puts
+    # puts
     puts "------------------------------   WELCOME TO   -------------------------------"
     puts
     puts a.asciify("Monster Smash!")
@@ -36,7 +36,7 @@ end
 def victory_screen
     system "clear"
     b = Artii::Base.new
-    puts
+    # puts
     puts "------------------------------   VICTORY   -------------------------------"
     puts
     puts b.asciify("           YOU WON !")
@@ -48,7 +48,7 @@ end
 def defeat_screen
     system "clear"
     c = Artii::Base.new
-    puts
+    # puts
     puts "-------------------------------   DEFEATED   --------------------------------"
     puts
     puts c.asciify("         YOU LOST !")
@@ -60,7 +60,7 @@ end
 def quit_screen
     system "clear"
     d = Artii::Base.new
-    puts
+    # puts
     puts "---------------------------   HASTALA VISTA   ---------------------------"
     puts
     puts d.asciify("  GAME OVER !")
