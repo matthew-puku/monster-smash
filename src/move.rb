@@ -2,6 +2,7 @@ require_relative "messages.rb"
 
 class Move
     attr_reader :name, :speed, :accuracy
+    
     def initialize(name, speed, accuracy)
         @name = name         # A string, e.g. "Smash"
         @speed = speed       # An integer. Determines which move is evaluated first in combat.
@@ -11,10 +12,36 @@ class Move
                                  # Moves that don't involve the opponent check against a dodge of 50.
                                  # Use 10000 for guaranteed success.
     end
+
     def use!(user, opponent) # user and opponent must be two Monster objects.
         slow_puts("#{user.name} used #{@name}!")
     end
 end
+
+class Rage < Move # Simple buff/debuff combo move. Relies on natural attribute reset at end of combat.
+    attr_reader :name, :speed, :accuracy, :power_buff, :dodge_debuff
+    
+    def initialize(name, speed, accuracy, power_buff, dodge_debuff)
+        super(name, speed, accuracy)
+        @power_buff = power_buff     # An integer. The move increases the user's power by this amount.
+        @dodge_debuff = dodge_debuff # An integer. The move decreases the user's dodge by this amount.
+    end
+
+    def use!(user, opponent)
+        super(user, opponent) # This will puts the message specificied in the Move class
+        user.power += power_buff
+        user.dodge -= dodge_debuff
+        slow_puts("#{user.name}'s power rose and dodge fell!")
+    end
+end
+
+Berserk = Rage.new("Berserk",
+    5,     # speed
+    10000, # accuracy
+    40,    # power_buff
+    20,    # dodge_debuff
+)
+
 
 class Attack < Move
     attr_reader :damage
@@ -24,7 +51,6 @@ class Attack < Move
         @damage = damage # An integer. The base damage of the attack.
     end
     
-
     def use!(user, opponent)
         super(user, opponent) # This will puts the message specificied in the Move class
 
@@ -67,7 +93,6 @@ Bash = Attack.new("Bash",
     40  # damage
 )
 
-# Special move that increases player's HP proportionate to applied damage to opponent's HP 
 class LifestealAttack < Attack # Like an Attack, but steals some HP from the opponent
     def initialize(name, speed, accuracy, damage, lifesteal_factor)
         super(name, speed, accuracy, damage)
@@ -98,5 +123,6 @@ Leeching_Bite = LifestealAttack.new("Leeching Bite",
     1   # lifesteal_factor
 )
 
+
+
 Boost_Speed = Move.new("Boost Speed", 10, 90)
-Berserk = Move.new("Berserk", 50, 10)
