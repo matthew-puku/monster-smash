@@ -36,12 +36,11 @@ class Rage < Move # Simple buff/debuff combo move. Relies on natural attribute r
 end
 
 Berserk = Rage.new("Berserk",
-    5,     # speed
+    25,     # speed
     10000, # accuracy
-    40,    # power_buff
-    20,    # dodge_debuff
+    30,    # power_buff
+    15,    # dodge_debuff
 )
-
 
 class Attack < Move
     attr_reader :damage
@@ -58,10 +57,11 @@ class Attack < Move
         # Accuracy is added to a random number and dodge is added to 50 to allow for variation in outcomes
         # If combined accuracy > combined dodge, apply the damage to HP and return :hit for use by subclass methods
         if @accuracy + rand(1..100) > opponent.dodge + 50
-            slow_puts "It hit for #{damage} damage."
-            opponent.current_HP -= @damage
-            return :hit
-            
+            adjusted_damage = @damage * (user.power / 100.0)
+            opponent.current_HP -= adjusted_damage
+
+            slow_puts "It hit for #{adjusted_damage.to_i} damage."
+            return :hit            
         # If accuracy < Dodge, do not apply the damage to HP and return :miss for use by subclass methods
         else
             slow_puts "...but it missed."
@@ -93,7 +93,7 @@ Bash = Attack.new("Bash",
     40  # damage
 )
 
-class LifestealAttack < Attack # Like an Attack, but steals some HP from the opponent
+class LifestealAttack < Attack # Like an Attack, but heals some HP on hit
     def initialize(name, speed, accuracy, damage, lifesteal_factor)
         super(name, speed, accuracy, damage)
         @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1 = 100%, 1.5 = 150%, etc.
@@ -106,8 +106,10 @@ class LifestealAttack < Attack # Like an Attack, but steals some HP from the opp
 
         # If the accuracy check passed, this code will execute.
         if move_outcome == :hit
-            healing = @damage * @lifesteal_factor
+            adjusted_damage = @damage * (user.power / 100.0)
+            healing = adjusted_damage * @lifesteal_factor
             user.current_HP += healing # heals user
+
             if user.current_HP > user.max_HP # checks user wasn't healed above their max
                 user.current_HP = user.max_HP
             end
@@ -122,7 +124,5 @@ Leeching_Bite = LifestealAttack.new("Leeching Bite",
     25, # damage
     1   # lifesteal_factor
 )
-
-
 
 Boost_Speed = Move.new("Boost Speed", 10, 90)
