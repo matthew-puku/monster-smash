@@ -11,16 +11,16 @@ bout.display_commencement
 
 # Continue to run the battle until HP is exhausted
 until bout.outcome != :ongoing
-    bout.run_round
+  bout.run_round
 end
 
 # Display screens depending on outcomes (defeat, victory, draw)
 if bout.outcome == :combatant1win    # Computer victory (player defeat)
-    defeat_screen                       # defined in messages.rb
+  defeat_screen                       # defined in messages.rb
 elsif bout.outcome == :combatant0win # Player victory
-    victory_screen                      # defined in messages.rb
+  victory_screen                      # defined in messages.rb
 elsif bout.outcome == :draw          # Draw. Not possible with current moveset This will probably just trigger a loss in final version.
-    puts "It's a draw!"                 # placeholder. 
+  puts "It's a draw!"                 # placeholder. 
 end
 
 # Where HP is exhausted or Quit is triggered, game over screen
