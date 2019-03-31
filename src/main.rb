@@ -19,8 +19,8 @@ if bout.outcome == :combatant1win    # Computer victory (player defeat)
   defeat_screen                       # Defined in messages.rb
 elsif bout.outcome == :combatant0win # Player victory
   victory_screen                      # Defined in messages.rb
-elsif bout.outcome == :draw          # Draw. Not possible with current moveset This will probably just trigger a loss in final version.
-  puts "It's a draw!"
+elsif bout.outcome == :draw          # Draw. Not possible with current moveset.
+  defeat_screen                       # Defined in messages.rb
 end
 
 # Display goodbye screen, no matter the battle's outcome.
