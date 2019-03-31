@@ -10,7 +10,7 @@ def slow_puts(string, delay = 1, press_any_key = true) # Puts given string to th
                                                        # press_any_key determines whether the user needs to press a button to continue
   for i in (0..string.length) # Iterates over each character in given string individually
     system "clear"
-    puts string[0,i] # Puts all characters up to and including the one being iterated over
+    puts string[0, i] # Puts all characters up to and including the one being iterated over
     sleep delay * 0.01
   end
   if press_any_key

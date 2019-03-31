@@ -36,7 +36,7 @@ class Rage < Move # Simple buff/debuff combo move. Relies on natural attribute r
 end
 
 Berserk = Rage.new("Berserk",
-  25,     # speed
+  25,    # speed
   10000, # accuracy
   30,    # power_buff
   15,    # dodge_debuff

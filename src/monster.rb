@@ -5,16 +5,16 @@ class Monster
   attr_accessor :max_HP, :current_HP, :dodge, :power
   
   def initialize(name, max_HP, dodge, moves, power = 100)
-    @name = name              # A string, e.g. "Dracula"
-    @moves = moves            # An array of Move objects.
-    @current_HP = max_HP      # An integer, initialised to the same value as @max_HP. When this hits 0, the monster is defeated.
-    @max_HP = max_HP          # An integer. If a monster's HP is restored, it cannot go above this value.
-    @dodge = dodge            # An integer. Determines the likelihood of being hit by attacks. 50 is default.
-                              # Use 1000 when a monster should be unhittable by normal means
-    @power = power            # An integer. Multiplies the damage of Attack moves. Use 100 to deal default damage, 150 to deal 50% extra, etc.
-    @default_dodge = dodge    # The default value of dodge. If a move removes buffs/debuffs, dodge will be set to this stat.
-    @default_max_HP = max_HP  # As above, but for max_HP
-    @default_power = power    # As above, but for power
+    @name = name             # A string, e.g. "Dracula"
+    @moves = moves           # An array of Move objects.
+    @current_HP = max_HP     # An integer, initialised to the same value as @max_HP. When this hits 0, the monster is defeated.
+    @max_HP = max_HP         # An integer. If a monster's HP is restored, it cannot go above this value.
+    @dodge = dodge           # An integer. Determines the likelihood of being hit by attacks. 50 is default.
+                             # Use 1000 when a monster should be unhittable by normal means
+    @power = power           # An integer. Multiplies the damage of Attack moves. Use 100 to deal default damage, 150 to deal 50% extra, etc.
+    @default_dodge = dodge   # The default value of dodge. If a move removes buffs/debuffs, dodge will be set to this stat.
+    @default_max_HP = max_HP # As above, but for max_HP
+    @default_power = power   # As above, but for power
   end
 
   def search_moves(input) # Returns a move from @moves based on the input string.
@@ -42,7 +42,7 @@ class Monster
       output += "(#{move.name[0]})#{move.name[1,99]}, "
     end
       return output
-    end
+  end
 end
 
 Player = Monster.new("You", 150, 50, [Smash, Rapid_Attack, Berserk])
