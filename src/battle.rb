@@ -58,13 +58,13 @@ class Battle
                                                               # (once for the conditional and once to return on success)
       
       # Check the input
-      if search_result != nil                         # Valid move input
+      if search_result != nil    # Valid move input
         return search_result 
         validating_input = false
-      elsif user_input == "q" or user_input == "quit" # Valid quit input
-        @outcome = :quit # change bout outcome to inform main.rb of user desire to quit.
+      elsif user_input[0] == "q" # Valid quit input
+        @outcome = :quit # Change bout outcome to inform main.rb of user desire to quit.
         validating_input = false
-      else                                            # Invalid input
+      else                       # Invalid input
         slow_puts("Invalid input! Please try again.", 0.5)
       end
     end
