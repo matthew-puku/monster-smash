@@ -18,7 +18,7 @@ class Move
   end
 end
 
-class Rage < Move # Simple buff/debuff combo move. Relies on natural attribute reset at end of combat.
+class Rage < Move # Buff/debuff combo. Relies on natural attribute reset at end of combat.
   attr_reader :name, :speed, :accuracy, :power_buff, :dodge_debuff
   
   def initialize(name, speed, accuracy, power_buff, dodge_debuff)
@@ -28,7 +28,7 @@ class Rage < Move # Simple buff/debuff combo move. Relies on natural attribute r
   end
 
   def use!(user, opponent)
-    super(user, opponent) # This will puts the message specificied in the Move class
+    super(user, opponent) # This will puts the message specificied in the Move class.
     user.power += power_buff
     user.dodge -= dodge_debuff
     slow_puts("#{user.name}'s power rose and dodge fell!")
@@ -53,16 +53,17 @@ class Attack < Move
   def use!(user, opponent)
     super(user, opponent) # This will puts the message specificied in the Move class
 
-    # Checks the accuracy attribute against the opponent's dodge stat to decide whether the move takes effect.
-    # Accuracy is added to a random number and dodge is added to 50 to allow for variation in outcomes
-    # If combined accuracy > combined dodge, apply the damage to HP and return :hit for use by subclass methods
+    # Checks the move's accuracy against the opponent's dodge to decide whether the move hits.
+    # A random number is added to accuracy to allow for variation in outcomes.
+    # 50 is added to dodge so that a move with 50 accuracy will hit 50 dodge 50% of the time.
+    # If combined accuracy > combined dodge, apply the damage and return :hit for use in subclasses
     if @accuracy + rand(1..100) > opponent.dodge + 50
       adjusted_damage = @damage * (user.power / 100.0)
       opponent.current_HP -= adjusted_damage
 
       slow_puts "It hit for #{adjusted_damage.to_i} damage."
       return :hit            
-    # If accuracy < Dodge, do not apply the damage to HP and return :miss for use by subclass methods
+    # If accuracy < dodge, just return :miss for use in subclasses
     else
       slow_puts "...but it missed."
       return :miss
@@ -70,8 +71,6 @@ class Attack < Move
   end
 end
 
-# DEV NOTE: it made more sense to us to put the move data in move.rb next to the classes referenced, for easier understanding.
-# Additionally, parsing hashes into constructors is tedious.
 Smash = Attack.new("Smash",
   30, # speed
   95, # accuracy
@@ -96,12 +95,12 @@ Bash = Attack.new("Bash",
 class LifestealAttack < Attack # Like an Attack, but heals some HP on hit
   def initialize(name, speed, accuracy, damage, lifesteal_factor)
     super(name, speed, accuracy, damage)
-    @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1 = 100%, 1.5 = 150%, etc.
+    @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1.15 = 115%.
   end
   
-  # if the move is a hit (not a miss), increase player's HP and decrease the opponent's HP 
+  # if the move hits, increase player's HP and decrease the opponent's HP 
   def use!(user, opponent)
-    # Puts a message, returns the outcome of an accuracy check, and damages the opponent if applicable.
+    # Puts a message, returns the outcome of an accuracy check, and damages the opponent if hit.
     move_outcome = super(user, opponent)
 
     # If the accuracy check passed, this code will execute.
@@ -109,8 +108,10 @@ class LifestealAttack < Attack # Like an Attack, but heals some HP on hit
       adjusted_damage = @damage * (user.power / 100.0)
 
       healing = adjusted_damage * @lifesteal_factor
-      user.current_HP += healing # heals user
-      if user.current_HP > user.max_HP # checks user wasn't healed above their max
+      user.current_HP += healing
+
+      # Stop user from being healed above their max
+      if user.current_HP > user.max_HP 
         user.current_HP = user.max_HP
       end
 

@@ -9,9 +9,10 @@ class Battle
   def initialize(combatants)
     @combatants = combatants        # An array of two Monster objects
     @outcome = :ongoing             # A symbol, used to inform main.rb of the gamestate.
-                                        # Options are :ongoing, :quit, :combatant0win (human win), :combatant1win (computer win), and :draw
-    @player_0_speed_advantage = 0.5 # A float, used to determine which move goes first in the event of a tie.
-                                        # DEV NOTE: this could be chosen by code structure alone, but doing it
+                                        # Options are :ongoing, :quit, :combatant0win (human win),
+                                        # :combatant1win (computer win), and :draw
+    @player_0_speed_advantage = 0.5 # A float, used to determine which move goes first if tied.
+                                        # This could be chosen by code structure alone, but doing it
                                         # in a variable makes it easier to change.
   end
   
@@ -39,7 +40,8 @@ class Battle
   
   # Displays erstaz healthbars
   def display_healths 
-    slow_puts("YOU: #{combatants[0].current_HP.to_i}HP\nFOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
+    slow_puts("YOU: #{combatants[0].current_HP.to_i}HP\n"\
+              "FOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
   end
   
   # Makes user select a move or quit.
@@ -54,8 +56,9 @@ class Battle
       # Get user input
       user_input = gets.chomp.downcase
       system "clear"
-      search_result = combatants[0].search_moves(user_input) # This is store in a variable to avoid running the function twice
-                                                              # (once for the conditional and once to return on success)
+      search_result = combatants[0].search_moves(user_input)
+      # This is stored in a variable to avoid running the function twice
+      # (once for the conditional and once to return on success)
       
       # Check the input
       if search_result != nil    # Valid move input
@@ -72,8 +75,8 @@ class Battle
   
   # Plays a turn of the game and updates the outcome as necessary. Best used in a while/until loop.
   def run_round( 
-    combatant0move = user_select_move(combatants[0]), # By default, the user selects a move with input...
-    combatant1move = @combatants[1].random_move)      # ...and the computer selects randomly
+    combatant0move = user_select_move(combatants[0]), # By default, the user chooses a move by input
+    combatant1move = @combatants[1].random_move)      # and the computer selects randomly
     
     # Check neither combatant chose to quit
     if @outcome == :quit 
@@ -82,12 +85,15 @@ class Battle
 
     # Decide who will go first by comparing the speed of the moves
     # Human character has a tiny speed advantage to avoid a draw situation
-    if combatant0move.speed + @player_0_speed_advantage > combatant1move.speed # Player first
+    
+    # Player first
+    if combatant0move.speed + @player_0_speed_advantage > combatant1move.speed 
       first_move = combatant0move
       first_mover = @combatants[0]
       second_move = combatant1move
       second_mover = @combatants[1]
-    else                                                                       # Computer first
+    # Computer first
+    else                                                                       
       first_move = combatant1move
       first_mover = @combatants[1]
       second_move = combatant0move

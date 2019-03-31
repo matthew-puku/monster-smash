@@ -1,3 +1,4 @@
+1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 require_relative "move.rb"
 
 class Monster
@@ -7,12 +8,17 @@ class Monster
   def initialize(name, max_HP, dodge, moves, power = 100)
     @name = name             # A string, e.g. "Dracula"
     @moves = moves           # An array of Move objects.
-    @current_HP = max_HP     # An integer, initialised to the same value as @max_HP. When this hits 0, the monster is defeated.
-    @max_HP = max_HP         # An integer. If a monster's HP is restored, it cannot go above this value.
-    @dodge = dodge           # An integer. Determines the likelihood of being hit by attacks. 50 is default.
+    @current_HP = max_HP     # An integer, initialised to the same value as @max_HP. 
+                             # When this hits 0, the monster is defeated.
+    @max_HP = max_HP         # An integer. If a monster's HP is restored, it cannot go above this
+                             # value.
+    @dodge = dodge           # An integer. Determines the likelihood of being hit by attacks.
+                             # Default is 50.
                              # Use 1000 when a monster should be unhittable by normal means
-    @power = power           # An integer. Multiplies the damage of Attack moves. Use 100 to deal default damage, 150 to deal 50% extra, etc.
-    @default_dodge = dodge   # The default value of dodge. If a move removes buffs/debuffs, dodge will be set to this stat.
+    @power = power           # An integer. Multiplies the damage of Attack moves.
+                             # Use 100 to deal default damage, 150 to deal 50% extra, etc.
+    @default_dodge = dodge   # The default value of dodge. If a move removes buffs/debuffs,
+                             # dodge will be set to this stat.
     @default_max_HP = max_HP # As above, but for max_HP
     @default_power = power   # As above, but for power
   end
@@ -38,10 +44,13 @@ class Monster
     return @moves.sample
   end
 
-  def display_moves # Formats @moves into a nice string that encourages correct user input and returns it. Intended to be cocenated with a string that allows the user to quit.
+  def display_moves # Returns @moves as a nice string that prompts valid user input.
+                    # Intended to be cocenated with a string that allows the user to quit.
     output = "Choose a move: "
-    for move in @moves do # Puts parenthesis around the (f)irst (l)etter of each move and cocenates it to the output.
-      output += "(#{move.name[0]})#{move.name[1,99]}, "
+    
+    # Puts parenthesis around the (f)irst (l)etter of each move and cocenates it to the output.
+    for move in @moves do 
+      output << "(#{move.name[0]})#{move.name[1,99]}, "
     end
 
     return output
