@@ -66,7 +66,7 @@ class Attack < Move
     else
       slow_puts "...but it missed."
       return :miss
-    end 
+    end
   end
 end
 
@@ -95,8 +95,8 @@ Bash = Attack.new("Bash",
 
 class LifestealAttack < Attack # Like an Attack, but heals some HP on hit
   def initialize(name, speed, accuracy, damage, lifesteal_factor)
-      super(name, speed, accuracy, damage)
-      @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1 = 100%, 1.5 = 150%, etc.
+    super(name, speed, accuracy, damage)
+    @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1 = 100%, 1.5 = 150%, etc.
   end
   
   # if the move is a hit (not a miss), increase player's HP and decrease the opponent's HP 

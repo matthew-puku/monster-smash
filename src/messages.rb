@@ -13,6 +13,7 @@ def slow_puts(string, delay = 1, press_any_key = true) # Puts given string to th
     puts string[0, i] # Puts all characters up to and including the one being iterated over
     sleep delay * 0.01
   end
+  
   if press_any_key
     STDIN.getch
   end

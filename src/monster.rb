@@ -25,11 +25,13 @@ class Monster
         found_move = move
         break # If a full match is found, stop looping. This will return it immediately.
       end
+
       if input[0] == move.name.downcase[0] # Check for a first-letter match
         found_move = move
       end
     end
-      return found_move
+
+    return found_move
   end
 
   def random_move # Returns a random move from @moves
@@ -41,7 +43,8 @@ class Monster
     for move in @moves do # Puts parenthesis around the (f)irst (l)etter of each move and cocenates it to the output.
       output += "(#{move.name[0]})#{move.name[1,99]}, "
     end
-      return output
+
+    return output
   end
 end
 
