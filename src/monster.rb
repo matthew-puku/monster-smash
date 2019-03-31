@@ -29,7 +29,7 @@ class Monster
         return found_move
     end
     def random_move # Returns a random move from @moves
-        return @moves[rand(0...@moves.length)]
+        return @moves.sample
     end
     def display_moves # Formats @moves into a nice string that encourages correct user input and returns it. Intended to be cocenated with a string that allows the user to quit.
         output = "Choose a move: "
