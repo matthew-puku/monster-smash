@@ -1,9 +1,10 @@
+# Messages.rb handles splash screens (welcome, victory, defeat, quit)
+# and other text-related artistry.
+
 require 'bundler/setup'
 require 'rubygems'
 require 'artii'
 require 'io/console'
-
-# Messages.rb handles splash screens (welcome, victory, defeat, quit) and other artistry.
 
 def slow_puts(string, # Puts given string to the screen gradually.
               delay = 1, # controls printout speed

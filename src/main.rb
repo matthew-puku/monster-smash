@@ -1,7 +1,7 @@
+# Main.rb contains big-picture game logic. More involved methods are called from other files.
+
 require_relative "battle.rb"
 require_relative "messages.rb"
-
-# Main.rb contains big-picture game logic. More involved methods are called from other files.
 
 welcome_screen # Call welcome screen from messages.rb
 

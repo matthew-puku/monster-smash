@@ -1,6 +1,12 @@
+# move.rb contains all classes and subclasses. It also stores move data. All move classes have an
+# initialise method which does what you'd expect, and a use! method that will reference the move
+# data to alter the state of the given Monsters.
+
 require_relative "messages.rb"
 
 class Move
+  # Base move class. Only effect is to put a message.
+
   attr_reader :name, :speed, :accuracy
     
   def initialize(name, speed, accuracy)
@@ -18,7 +24,9 @@ class Move
   end
 end
 
-class Rage < Move # Buff/debuff combo. Relies on natural attribute reset at end of combat.
+class Rage < Move
+  # Increases user's power and decreases their dodge.
+
   attr_reader :name, :speed, :accuracy, :power_buff, :dodge_debuff
   
   def initialize(name, speed, accuracy, power_buff, dodge_debuff)
@@ -29,8 +37,10 @@ class Rage < Move # Buff/debuff combo. Relies on natural attribute reset at end 
 
   def use!(user, opponent)
     super(user, opponent) # This will puts the message specificied in the Move class.
+    
     user.power += power_buff
     user.dodge -= dodge_debuff
+    
     slow_puts("#{user.name}'s power rose and dodge fell!")
   end
 end
@@ -43,6 +53,8 @@ Berserk = Rage.new("Berserk",
 )
 
 class Attack < Move
+  # The simplest attack. Checks move accuracy against opponent's dodge and deals damage on hit.
+
   attr_reader :damage
   
   def initialize(name, speed, accuracy, damage)
@@ -92,7 +104,9 @@ Bash = Attack.new("Bash",
   40  # damage
 )
 
-class LifestealAttack < Attack # Like an Attack, but heals some HP on hit
+class LifestealAttack < Attack
+  # Like an Attack, but heals some HP on hit
+  
   def initialize(name, speed, accuracy, damage, lifesteal_factor)
     super(name, speed, accuracy, damage)
     @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1.15 = 115%.

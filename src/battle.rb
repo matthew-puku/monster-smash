@@ -1,8 +1,10 @@
 require_relative "monster.rb"
 
-## Battle.rb creates a new instance of battle, and handles the mechanics of deciding outcome (HP is exhausted), 
-
 class Battle
+  # A Battle is the basic loop of the game. Two monsters fight until one or both of them have no
+  # current_HP remaining, then battle will update @outcome for use by outer levels of game logic.
+  # Other than @outcome, Battle is stateless. Game state is mostly stored by Monster objects.
+
   attr_accessor :combatants
   attr_reader :outcome
 
