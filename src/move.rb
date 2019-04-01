@@ -106,7 +106,7 @@ Bash = Attack.new("Bash",
 
 class LifestealAttack < Attack
   # Like an Attack, but heals some HP on hit
-  
+
   def initialize(name, speed, accuracy, damage, lifesteal_factor)
     super(name, speed, accuracy, damage)
     @lifesteal_factor = lifesteal_factor # The amount of damage returned as health. 1.15 = 115%.
@@ -140,5 +140,3 @@ Leeching_Bite = LifestealAttack.new("Leeching Bite",
   25, # damage
   1   # lifesteal_factor
 )
-
-# Boost_Speed = Move.new("Boost Speed", 10, 90)
