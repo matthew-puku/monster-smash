@@ -1,4 +1,3 @@
-1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890
 require_relative "move.rb"
 
 class Monster
@@ -27,7 +26,10 @@ class Monster
     @default_power = power   # As above, but for power
   end
 
-  def search_moves(input) # Returns a move from @moves based on the input string.
+  # Returns a move from @moves based on the input string. First tries to find a full match. If that
+  # fails, it will return a move that matches the first letter of the input string. If that fails,
+  # returns nil.
+  def search_moves(input)
     input = input.downcase
     found_move = nil # Last resort, returned if no matches found.
     for move in @moves
@@ -44,12 +46,14 @@ class Monster
     return found_move
   end
 
-  def random_move # Returns a random move from @moves
+  # Returns a random move from @moves
+  def random_move
     return @moves.sample
   end
 
-  def display_moves # Returns @moves as a nice string that prompts valid user input.
-                    # Intended to be cocenated with a string that allows the user to quit.
+  # Returns @moves as a nice string that prompts valid user input.
+  # Intended to be cocenated with a string that allows the user to quit.
+  def display_moves 
     output = "Choose a move: "
     
     # Puts parenthesis around the (f)irst (l)etter of each move and cocenates it to the output.

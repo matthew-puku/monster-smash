@@ -46,19 +46,20 @@ class Battle
               "FOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
   end
   
-  # Makes user select a move or quit.
+  # Makes user select a move for given Monster and returns it. If they choose to quit, updates
+  # @outcome and returns false.
   def user_select_move(combatant) 
     validating_input = true
     selected_move = nil
     while validating_input
       # Display useful information to inform player choice before asking for input
       display_healths
-      puts display_choices(@combatants[0])
+      puts display_choices(combatant)
       
       # Get user input
       user_input = gets.chomp.downcase
       system "clear"
-      search_result = combatants[0].search_moves(user_input)
+      search_result = combatant.search_moves(user_input)
       # This is stored in a variable to avoid running the function twice
       # (once for the conditional and once to return on success)
       
@@ -102,12 +103,14 @@ class Battle
       second_mover = @combatants[0]
     end
 
-    # Fight! Apply the first move (whichever user) 
+    # Fight! 
     first_move.use!(first_mover, second_mover)
-    update_outcome! # Keep main.rb updated on battle state.
-    if outcome == :ongoing # Check the move didn't end the battle (exhaust HP) before continuing
+
+    # Check the move didn't end the battle (exhaust HP) before continuing
+    update_outcome!
+    if outcome == :ongoing
       second_move.use!(second_mover, first_mover)
-      update_outcome! # Keep main.rb updated on battle state.
+      update_outcome!
     end
   end
 end
