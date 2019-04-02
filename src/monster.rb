@@ -43,12 +43,12 @@ class Monster
       end
     end
 
-    return found_move
+    found_move
   end
 
   # Returns a random move from @moves
   def random_move
-    return @moves.sample
+    @moves.sample
   end
 
   # Returns @moves as a nice string that prompts valid user input.
@@ -59,7 +59,7 @@ class Monster
     # Puts parenthesis around the (f)irst (l)etter of each move and cocenates it to the output.
     @moves.each { |move| output << "(#{move.name[0]})#{move.name[1,99]}, " }
 
-    return output
+    output
   end
 end
 

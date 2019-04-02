@@ -36,8 +36,7 @@ class Battle
   
   # Returns a monster's formatted movelist plus the option to quit.
   def display_choices(monster) 
-    output = monster.display_moves + "or type (Q)uit to give up."
-    return output
+    monster.display_moves + "or type (Q)uit to give up."
   end
   
   # Displays erstaz healthbars

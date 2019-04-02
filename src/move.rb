@@ -74,11 +74,11 @@ class Attack < Move
       opponent.current_HP -= adjusted_damage
 
       slow_puts "It hit for #{adjusted_damage.to_i} damage."
-      return :hit            
+      :hit            
     # If accuracy < dodge, just return :miss for use in subclasses
     else
       slow_puts "...but it missed."
-      return :miss
+      :miss
     end
   end
 end
