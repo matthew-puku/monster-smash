@@ -43,7 +43,9 @@ class Battle
   # Displays erstaz healthbars
   def display_healths 
     slow_puts("YOU: #{combatants[0].current_HP.to_i}HP\n"\
-              "FOE: #{combatants[1].current_HP.to_i}HP", 0.5, false)
+              "FOE: #{combatants[1].current_HP.to_i}HP",
+              delay: 0.5,
+              press_any_key: false)
   end
   
   # Makes user select a move for given Monster and returns it. If they choose to quit, updates
@@ -71,7 +73,7 @@ class Battle
         @outcome = :quit # Change bout outcome to inform main.rb of user desire to quit.
         validating_input = false
       else                       # Invalid input
-        slow_puts("Invalid input! Please try again.", 0.5)
+        slow_puts("Invalid input! Please try again.", delay: 0.5)
       end
     end
   end
