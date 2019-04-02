@@ -20,7 +20,7 @@ class Battle
   
   # Checks combatants' HP and updates @outcome accordingly.
   def update_outcome! 
-    if @combatants[0].current_HP <= 0 and @combatants[1].current_HP <= 0   # Draw
+    if @combatants[0].current_HP <= 0 && @combatants[1].current_HP <= 0    # Draw
       @outcome = :draw
     elsif @combatants[0].current_HP <= 0                                   # Computer Win
       @outcome = :combatant1win
