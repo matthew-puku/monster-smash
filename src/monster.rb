@@ -32,7 +32,7 @@ class Monster
   def search_moves(input)
     input = input.downcase
     found_move = nil # Last resort, returned if no matches found.
-    for move in @moves
+    @moves.each do |move|
       if input == move.name.downcase # Check for a full match
         found_move = move
         break # If a full match is found, stop looping. This will return it immediately.
@@ -57,9 +57,7 @@ class Monster
     output = "Choose a move: "
     
     # Puts parenthesis around the (f)irst (l)etter of each move and cocenates it to the output.
-    for move in @moves do 
-      output << "(#{move.name[0]})#{move.name[1,99]}, "
-    end
+    @moves.each { |move| output << "(#{move.name[0]})#{move.name[1,99]}, " }
 
     return output
   end

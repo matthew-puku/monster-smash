@@ -11,7 +11,7 @@ require 'io/console'
 # if press_any_key is true, the user will need to press a button to continue once the string has
 # finished displaying.
 def slow_puts(string, delay: 1, press_any_key: true)                                           
-  for i in (0..string.length) # Iterates over each index in a given string
+  (0..string.length).each do |i| # Iterates over each index in a given string
     # Clear the screen to provide an animated effect.
     system "clear"
 
