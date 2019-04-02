@@ -2,7 +2,7 @@ require_relative "move.rb"
 
 class Monster
   # Class for representing fight-able characters in the game, including the player character.
-  # Monsters store state for reference by the rest of the program (mostly battle.rb and the use!
+  # Monsters store state for reference by the rest of the program (mostly battle.rb and the use
   # methods in move.rb)
 
   attr_reader :name, :moves, :default_dodge, :default_max_HP

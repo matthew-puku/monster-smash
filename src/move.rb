@@ -1,5 +1,5 @@
 # move.rb contains all classes and subclasses. It also stores move data. All move classes have an
-# initialise method which does what you'd expect, and a use! method that will reference the move
+# initialise method which does what you'd expect, and a use method that will reference the move
 # data to alter the state of the given Monsters.
 
 require_relative "messages.rb"
@@ -19,7 +19,7 @@ class Move
                               # Use 10000 for guaranteed success.
   end
 
-  def use!(user, opponent) # user and opponent must be two Monster objects.
+  def use(user, opponent) # user and opponent must be two Monster objects.
     slow_puts("#{user.name} used #{@name}!")
   end
 end
@@ -35,7 +35,7 @@ class Rage < Move
     @dodge_debuff = dodge_debuff # An integer. The move decreases the user's dodge by this amount.
   end
 
-  def use!(user, opponent)
+  def use(user, opponent)
     super(user, opponent) # This will puts the message specificied in the Move class.
     
     user.power += power_buff
@@ -62,7 +62,7 @@ class Attack < Move
     @damage = damage # An integer. The base damage of the attack.
   end
   
-  def use!(user, opponent)
+  def use(user, opponent)
     super(user, opponent) # This will puts the message specificied in the Move class
 
     # Checks the move's accuracy against the opponent's dodge to decide whether the move hits.
@@ -113,7 +113,7 @@ class LifestealAttack < Attack
   end
   
   # if the move hits, increase player's HP and decrease the opponent's HP 
-  def use!(user, opponent)
+  def use(user, opponent)
     # Puts a message, returns the outcome of an accuracy check, and damages the opponent if hit.
     move_outcome = super(user, opponent)
 

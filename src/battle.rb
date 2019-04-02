@@ -19,7 +19,7 @@ class Battle
   end
   
   # Checks combatants' HP and updates @outcome accordingly.
-  def update_outcome! 
+  def update_outcome 
     if @combatants[0].current_HP <= 0 && @combatants[1].current_HP <= 0    # Draw
       @outcome = :draw
     elsif @combatants[0].current_HP <= 0                                   # Computer Win
@@ -105,13 +105,13 @@ class Battle
     end
 
     # Fight! 
-    first_move.use!(first_mover, second_mover)
-    update_outcome!
+    first_move.use(first_mover, second_mover)
+    update_outcome
 
     # Check the move didn't end the battle (exhaust HP) before continuing
     return unless outcome == :ongoing
     
-    second_move.use!(second_mover, first_mover)
-    update_outcome!
+    second_move.use(second_mover, first_mover)
+    update_outcome
   end
 end
