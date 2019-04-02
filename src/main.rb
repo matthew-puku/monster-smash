@@ -6,7 +6,7 @@ require_relative "messages.rb"
 welcome_screen # Call welcome screen from messages.rb
 
 # Commence gaming loop handled in battle.rb with two combatants, user and computer
-bout = Battle.new([Player, Dracula])
+bout = Battle.new([PLAYER, DRACULA])
 bout.display_commencement
 
 # Continue to run the battle until HP is exhausted

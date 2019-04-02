@@ -63,10 +63,10 @@ class Monster
   end
 end
 
-Player = Monster.new("You", 150, 50, [Smash, Rapid_Attack, Berserk])
-Frank = Monster.new("Frankenstein's Monster", 150, 50, [Smash, Thrash])
-Dracula = Monster.new("Dracula", 150, 60, [Rapid_Attack, Leeching_Bite])
+PLAYER = Monster.new("You", 150, 50, [SMASH, RAPID_ATTACK, BERSERK])
+FRANK = Monster.new("Frankenstein's Monster", 150, 50, [SMASH, THRASH])
+DRACULA = Monster.new("Dracula", 150, 60, [RAPID_ATTACK, LEECHING_BITE])
 
-Wolfman = Monster.new("Wolfman", 150, 50, [Smash, Rapid_Attack, Thrash, Bash])
-Igor = Monster.new("Igor", 100, 50, [Smash, Rapid_Attack, Thrash, Bash])
-Zombie = Monster.new("Zombie", 120, 40, [Smash, Rapid_Attack, Thrash, Bash])
+WOLFMAN = Monster.new("Wolfman", 150, 50, [SMASH, RAPID_ATTACK, THRASH, BASH])
+IGOR = Monster.new("Igor", 100, 50, [SMASH, RAPID_ATTACK, THRASH, BASH])
+ZOMBIE = Monster.new("Zombie", 120, 40, [SMASH, RAPID_ATTACK, THRASH, BASH])

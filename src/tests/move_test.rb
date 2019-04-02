@@ -5,7 +5,7 @@ def slow_puts(string, delay = 1, press_any_key = true) # Overwrite slow_puts met
   puts string
 end
 
-test_moves = [Smash, Rapid_Attack, Thrash, Bash, Leeching_Bite] # All moves in this array will be tested against each other.
+test_moves = [SMASH, BASH] # All moves in this array will be tested against each other.
 
 for first_move in test_moves do # Tests every move against every other move.
   puts "-=Testing #{first_move.name}=-"

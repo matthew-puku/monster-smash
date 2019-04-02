@@ -45,7 +45,7 @@ class Rage < Move
   end
 end
 
-Berserk = Rage.new("Berserk",
+BERSERK = Rage.new("Berserk",
   25,    # speed
   10000, # accuracy
   30,    # power_buff
@@ -83,22 +83,22 @@ class Attack < Move
   end
 end
 
-Smash = Attack.new("Smash",
+SMASH = Attack.new("Smash",
   30, # speed
   95, # accuracy
   50  # damage
 )
-Rapid_Attack = Attack.new("Rapid Attack",
+RAPID_ATTACK = Attack.new("Rapid Attack",
   95, # speed
   95, # accuracy
   15  # damage
 )
-Thrash = Attack.new("Thrash",
+THRASH = Attack.new("Thrash",
   70, # speed
   70, # accuracy
   30  # damage
 )
-Bash = Attack.new("Bash",
+BASH = Attack.new("Bash",
   10, # speed
   95, # accuracy
   40  # damage
@@ -134,7 +134,7 @@ class LifestealAttack < Attack
   end
 end
 
-Leeching_Bite = LifestealAttack.new("Leeching Bite",
+LEECHING_BITE = LifestealAttack.new("Leeching Bite",
   10, # speed
   95, # accuracy
   25, # damage
