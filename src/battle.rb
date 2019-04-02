@@ -107,12 +107,12 @@ class Battle
 
     # Fight! 
     first_move.use!(first_mover, second_mover)
+    update_outcome!
 
     # Check the move didn't end the battle (exhaust HP) before continuing
+    return unless outcome == :ongoing
+    
+    second_move.use!(second_mover, first_mover)
     update_outcome!
-    if outcome == :ongoing
-      second_move.use!(second_mover, first_mover)
-      update_outcome!
-    end
   end
 end
