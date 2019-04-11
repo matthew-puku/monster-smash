@@ -82,10 +82,7 @@ class Battle
     combatant0move = user_select_move(combatants[0]), # By default, the user chooses a move by input
     combatant1move = @combatants[1].random_move)      # and the computer selects randomly
     
-    # Check neither combatant chose to quit
-    if @outcome == :quit 
-      return # Stops executing this method
-    end
+    return if @outcome == :quit
 
     # Decide who will go first by comparing the speed of the moves
     # Human character has a tiny speed advantage to avoid a draw situation
